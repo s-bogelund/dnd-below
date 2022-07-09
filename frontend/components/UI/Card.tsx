@@ -1,5 +1,11 @@
 import React from 'react'
 
-export const Card = (props: any) => {
+interface CardProps {
+	className?: string
+	children?: React.ReactNode
+	theme?: string
+}
+
+export const Card = (props: CardProps) => {
 	return <div className="card">{props.children}</div>
 }

@@ -1,6 +1,12 @@
-import React, { ReactElement, ReactHTMLElement, useEffect } from 'react'
+import React from 'react'
 
-const BodyContainer = (props: any) => {
+interface BodyContainerProps {
+	className?: string
+	children?: React.ReactNode
+	theme?: string
+}
+
+const BodyContainer = (props: BodyContainerProps) => {
 	return (
 		<div
 			className={
