@@ -4,7 +4,7 @@ const BodyContainer = (props: any) => {
 	return (
 		<div
 			className={
-				'grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-4 gap-5 lg:p-10 h-screen w-screen place-items-center ' +
+				'bg-base-100 grid grid-cols-2 grid-rows-6 md:grid-cols-3 md:grid-rows-4 lg:p-10 h-screen w-screen place-items-center gap-1' +
 				props.className
 			}
 		>
