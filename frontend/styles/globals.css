@@ -1,3 +1,243 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
+
+@layer components {
+	.btn {
+		@apply font-semibold no-underline;
+		border-width: var(--border-btn, 1px);
+		text-transform: var(--btn-text-case, uppercase);
+		&:active:hover,
+		&:active:focus {
+			animation: none;
+		}
+		&:active:hover,
+		&:active:focus {
+			transform: scale(var(--btn-focus-scale, 0.95));
+		}
+		@apply ease-in duration-[20ms] xl:ease-in-out xl:duration-[60ms];
+		@apply transition-opacity ease-out opacity-100 xl:duration-[60ms] active:opacity-[0.80] duration-[20ms];
+
+		/* default btn */
+		& {
+			@apply border-neutral-focus bg-neutral text-neutral-content xl:border-neutral;
+			&:hover,
+			&-active {
+				@apply border-neutral-focus bg-neutral text-neutral-content xl:border-gray-500 xl:bg-neutral-focus xl:border;
+			}
+			&:focus-visible {
+				outline: none;
+				outline-offset: 0;
+			}
+		}
+		/* brand colors */
+		&-primary {
+			@apply border-primary-focus bg-primary text-primary-content;
+			&:hover,
+			&.btn-active {
+				@apply border-primary bg-primary text-primary-content xl:border-primary-focus xl:bg-primary-focus xl:border;
+			}
+			&:focus-visible {
+				outline: 2px solid hsl(var(--p));
+			}
+		}
+		&-secondary {
+			@apply border-secondary  bg-secondary text-secondary-content;
+			&:hover,
+			&.btn-active {
+				@apply border-secondary bg-secondary text-secondary-content xl:border-secondary-focus xl:bg-secondary-focus;
+			}
+			&:focus-visible {
+				outline: 2px solid hsl(var(--s));
+			}
+		}
+		&-accent {
+			@apply border-accent bg-accent text-accent-content;
+			&:hover,
+			&.btn-active {
+				@apply xl:border-accent-focus xl:bg-accent-focus border-accent bg-accent text-accent-content;
+			}
+			&:focus-visible {
+				outline: 2px solid hsl(var(--a));
+			}
+		}
+
+		/* btn with state colors */
+		&-info {
+			@apply border-info bg-info text-info-content;
+			&:hover,
+			&.btn-active {
+				@apply border-info bg-info;
+			}
+			&:focus-visible {
+				outline: 2px solid hsl(var(--in));
+			}
+		}
+		&-success {
+			@apply border-success opacity-90 bg-success text-success-content;
+			&:hover,
+			&.btn-active {
+				@apply border-success opacity-90 bg-success text-success-content;
+			}
+			&:focus-visible {
+				outline: 2px solid hsl(var(--su));
+			}
+		}
+		&-warning {
+			@apply border-warning bg-warning text-warning-content;
+			&:hover,
+			&.btn-active {
+				@apply border-warning bg-warning text-warning-content;
+			}
+			&:focus-visible {
+				outline: 2px solid hsl(var(--wa));
+			}
+		}
+		&-error {
+			@apply border-error bg-error text-error-content;
+			&:hover,
+			&.btn-active {
+				@apply border-error bg-error text-error-content;
+			}
+			&:focus-visible {
+				outline: 2px solid hsl(var(--er));
+			}
+		}
+
+		/* glass */
+		&.glass {
+			&:hover,
+			&.btn-active {
+				--glass-opacity: 25%;
+				--glass-border-opacity: 15%;
+			}
+			&:focus-visible {
+				outline: 2px solid 0 0 2px currentColor;
+			}
+		}
+
+		/* btn variants */
+		&-ghost {
+			@apply border border-transparent bg-transparent text-current;
+			&:hover,
+			&.btn-active {
+				@apply border-opacity-0 bg-base-content bg-opacity-20;
+			}
+			&:focus-visible {
+				outline: 2px solid 0 0 2px currentColor;
+			}
+		}
+		&-link {
+			@apply border-transparent bg-transparent text-primary;
+			&:hover,
+			&.btn-active {
+				@apply border-transparent bg-transparent underline;
+			}
+			&:focus-visible {
+				outline: 2px solid 0 0 2px currentColor;
+			}
+		}
+
+		/* outline */
+		&-outline {
+			@apply border-current bg-transparent text-base-content;
+			&:hover {
+				@apply border-current xl:bg-neutral-focus bg-transparent text-base-content;
+			}
+			&.btn-primary {
+				@apply text-primary;
+				&:hover {
+					@apply text-primary bg-transparent border-current xl:bg-primary xl:text-white;
+				}
+			}
+			&.btn-secondary {
+				@apply text-secondary;
+				&:hover {
+					@apply xl:border-secondary-focus xl:bg-secondary-focus xl:text-secondary-content border-secondary text-secondary bg-transparent;
+				}
+			}
+			&.btn-accent {
+				@apply text-accent;
+				&:hover {
+					@apply xl:border-accent-focus xl:bg-accent-focus xl:text-accent-content bg-transparent text-accent border-accent;
+				}
+			}
+			&.btn-success {
+				@apply text-success;
+				&:hover {
+					@apply xl:border-success xl:bg-success xl:text-success-content bg-transparent border-current text-success;
+				}
+			}
+			&.btn-info {
+				@apply text-info;
+				&:hover {
+					@apply xl:border-info xl:bg-info xl:text-info-content text-info bg-transparent border-info;
+				}
+			}
+			&.btn-warning {
+				@apply text-warning;
+				&:hover {
+					@apply xl:border-warning xl:bg-warning xl:text-warning-content text-warning bg-transparent border-warning;
+				}
+			}
+			&.btn-error {
+				@apply text-error;
+				&:hover {
+					@apply xl:border-error xl:bg-error xl:text-error-content text-error bg-transparent border-error;
+				}
+			}
+		}
+
+		/* disabled */
+		&-disabled,
+		&-disabled:hover,
+		&[disabled],
+		&[disabled]:hover {
+			@apply border-opacity-0 bg-neutral bg-opacity-20 text-base-content text-opacity-20;
+		}
+
+		/* loading */
+		&.loading {
+			&.btn-square:before,
+			&.btn-circle:before {
+				@apply mr-0;
+			}
+			&.btn-xl:before,
+			&.btn-lg:before {
+				@apply h-5 w-5;
+			}
+			&.btn-sm:before,
+			&.btn-xs:before {
+				@apply h-3 w-3;
+			}
+		}
+	}
+	/* group */
+	.btn-group {
+		& > input[type='radio']:checked.btn,
+		& > .btn-active {
+			@apply border-primary bg-primary text-primary-content;
+			&:focus-visible {
+				outline: 2px solid hsl(var(--p));
+			}
+		}
+		&:not(.btn-group-vertical) > .btn:not(:first-of-type) {
+			@apply -ml-px rounded-l-none;
+		}
+		&:not(.btn-group-vertical) > .btn:not(:last-of-type) {
+			@apply rounded-r-none;
+		}
+		&-vertical {
+			& > .btn:not(:first-of-type) {
+				@apply -mt-px rounded-t-none;
+			}
+			& > .btn:not(:last-of-type) {
+				@apply rounded-b-none;
+			}
+		}
+	}
+
+	@keyframes button-pop {
+	}
+}

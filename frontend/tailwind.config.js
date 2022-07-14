@@ -6,32 +6,33 @@ module.exports = {
 	},
 	content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
 	theme: {
-		extend: {
-			screens: {
-				betterhover: { raw: '(hover: hover)' },
-			},
+		screens: {
+			sm: '480px',
+			md: '768px',
+			lg: '976px',
+			xl: '1200px',
 		},
+		extend: {},
 	},
-	plugins: [require('daisyui')],
+	plugins: [
+		require('@tailwindcss/typography'),
+		require('@tailwindcss/line-clamp'),
+		require('daisyui'),
+	],
 	// require('daisyui')
 	daisyui: {
 		themes: [
-			{
-				myCoffee: {
-					...require('daisyui/src/colors/themes')['[data-theme=coffee]'],
-				},
-			},
 			'coffee',
 			'garden',
 			{
 				night: {
 					...require('daisyui/src/colors/themes')['[data-theme=night]'],
-
-					'primary-focus': '#3abff8',
-					'secondary-focus': '#828df8',
-					'neutral-focus': '#1d283a',
-					'primary-focus-hover': '#FFFFFF',
-					'--animation-btn': '0.25s',
+					primary: '#216fb4',
+					secondary: '#5964af',
+					accent: '#7b426e',
+					warning: '#ddb04f',
+					success: '#27b1a3',
+					info: '#0d98d6',
 				},
 			},
 			{
@@ -40,6 +41,7 @@ module.exports = {
 				},
 			},
 			'cmyk',
+			'halloween',
 		],
 	},
 }
