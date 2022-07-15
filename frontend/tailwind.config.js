@@ -12,7 +12,11 @@ module.exports = {
 			lg: '976px',
 			xl: '1367px', // iPad Pro landscape + 1
 		},
-		extend: {},
+		extend: {
+			gridTemplateRows: {
+				12: 'repeat(12, minmax(0, 1fr))',
+			},
+		},
 	},
 	plugins: [
 		require('@tailwindcss/typography'),
