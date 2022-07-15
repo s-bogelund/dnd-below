@@ -2,9 +2,9 @@ import React from 'react'
 import Button from '../../Button'
 import BodyContainer from '../../UI/BodyContainer'
 import { Card } from '../../UI/Card'
-import MetaInfo from './metaInfo/MetaInfo'
+import MetaInfo from '../frontPage/metaInfo/MetaInfo'
 
-const FrontPage = () => {
+const SecondPage = () => {
 	return (
 		<BodyContainer className="grid-cols-1 grid-rows-3 bg-base-300 h-screen w-screen">
 			<MetaInfo characterName="Halfdan Helligskæg" />
@@ -12,4 +12,4 @@ const FrontPage = () => {
 	)
 }
 
-export default FrontPage
+export default SecondPage

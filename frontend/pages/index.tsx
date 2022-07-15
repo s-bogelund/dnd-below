@@ -5,6 +5,7 @@ import Button from '../components/Button'
 import React from 'react'
 import { Card } from '../components/UI/Card'
 import FrontPage from '../components/characterSheet/frontPage/FrontPage'
+import CharacterSheet from '../components/characterSheet/CharacterSheet'
 
 const Home: NextPage = () => {
 	const [text, setText]: [string, Function] = React.useState('')
@@ -21,7 +22,7 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/icon-192x192.png" />
 				<link rel="manifest" href="/manifest.json" />
 			</Head>
-			<FrontPage />
+			<CharacterSheet />
 		</div>
 	)
 }

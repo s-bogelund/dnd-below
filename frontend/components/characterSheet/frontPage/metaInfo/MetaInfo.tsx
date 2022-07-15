@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from '../../UI/Card'
+import { Card } from '../../../UI/Card'
 import MetaEntry from './MetaEntry'
 
 interface MetaInfoProps {
@@ -16,7 +16,7 @@ interface MinorEntryProps {
 const metaEntryFields: MinorEntryProps[] = [
 	{
 		header: 'Level & Class',
-		body: 'Level 1, Fighter',
+		body: 'Level 3 Paladin',
 	},
 	{
 		header: 'Background',
@@ -49,8 +49,8 @@ const MetaInfo = (props: MetaInfoProps) => {
 	return (
 		<Card className="grid grid-cols-10 bg-neutral bg-opacity-70 px-4 py-4 gap-2 h-44">
 			<div className={'flex flex-col col-span-4 h-full'}>
-				<p className="text-sm mb-1 lg:font-semibold font-semibold">Character Name</p>
-				<Card className="text-3xl lg:py-8 md:py-6 lg:px-4 md:px-2 font-semibold lg:h-42 text-base-content h-full rounded-sm tracking-tight">
+				<p className="text-sm mb-1 lg:font-semibold font-medium">Character Name</p>
+				<Card className="lg:text-3xl md:text-2xl lg:py-8 md:py-6 lg:px-4 md:px-2 font-semibold text-base-content h-full rounded-sm tracking-tight border-[1px] border-white border-opacity-20">
 					{props.characterName}
 				</Card>
 			</div>
