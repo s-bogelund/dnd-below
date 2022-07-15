@@ -10,7 +10,7 @@ module.exports = {
 			sm: '480px',
 			md: '768px',
 			lg: '976px',
-			xl: '1200px',
+			xl: '1367px', // iPad Pro landscape + 1
 		},
 		extend: {},
 	},
@@ -42,6 +42,7 @@ module.exports = {
 			},
 			'cmyk',
 			'halloween',
+			'dark',
 		],
 	},
 }
