@@ -239,8 +239,8 @@
 	}
 
 	.swipe-fix {
-		-webkit-backface-visibility: hidden;
-		-webkit-transform: translate3d(0, 0, 0);
+		-webkit-backface-visibility: hidden !important;
+		-webkit-transform: translate3d(0, 0, 0) !important;
 	}
 
 	@keyframes button-pop {

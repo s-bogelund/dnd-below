@@ -6,7 +6,7 @@ import MetaInfo from './metaInfo/MetaInfo'
 
 const FrontPage = () => {
 	return (
-		<BodyContainer className="grid-cols-1 grid-rows-3 bg-base-300 h-screen w-screen">
+		<BodyContainer className="grid-cols-1 grid-rows-3 bg-base-300 h-screen w-screen ">
 			<MetaInfo characterName="Halfdan Helligskæg" />
 		</BodyContainer>
 	)
