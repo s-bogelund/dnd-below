@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { Card } from '../../../UI/Card'
+import HiddenTextField from '../../../UI/HiddenTextField'
 
 interface MetaEntryProps {
 	className?: string
@@ -21,15 +22,11 @@ const MetaEntry = (props: MetaEntryProps) => {
 					bodyTextSize
 				}
 			>
-				<input
-					type="text"
-					className={
-						'input ghost lg:text-md w-full font-medium focus:border-transparent focus-input-outline p-0 bg-transparent text-center h-5 break-words max-h-10 rounded-sm ' +
-						bodyTextSize
-					}
+				<HiddenTextField
+					className={bodyTextSize}
 					value={bodyText}
 					onInput={event => handleBodyText(event.currentTarget)}
-				></input>
+				></HiddenTextField>
 			</Card>
 		</div>
 	)

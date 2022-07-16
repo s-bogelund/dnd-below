@@ -5,26 +5,26 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/pagination'
+import FrontPageFlex from './frontPage/FrontPageFlex'
 
 const CharacterSheet = () => {
 	return (
-		<div className="">
-			<Swiper
-				cssMode={true}
-				spaceBetween={80}
-				pagination={true}
-				modules={[Pagination]}
-				slidesPerView={1}
-				className="swipe-fix"
-			>
-				<SwiperSlide className="swipe-fix">
-					<FrontPage />
-				</SwiperSlide>
-				<SwiperSlide className="swipe-fix">
-					<SecondPage />
-				</SwiperSlide>
-			</Swiper>
-		</div>
+		<Swiper
+			cssMode={true}
+			spaceBetween={80}
+			pagination={true}
+			modules={[Pagination]}
+			slidesPerView={1}
+			className="swipe-fix h-[100%]"
+		>
+			<SwiperSlide className="swipe-fix">
+				{/* <FrontPage /> */}
+				<FrontPageFlex />
+			</SwiperSlide>
+			<SwiperSlide className="swipe-fix">
+				<SecondPage />
+			</SwiperSlide>
+		</Swiper>
 	)
 }
 
