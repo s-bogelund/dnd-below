@@ -57,10 +57,6 @@ module.exports = {
 				'span-100': 'span 100 / span 100',
 			},
 		},
-		fontFamily: {
-			hexagon: ['Material Symbols', 'bold'],
-			shield: ['Material Symbols', 'bold'],
-		},
 	},
 	plugins: [
 		require('@tailwindcss/typography'),

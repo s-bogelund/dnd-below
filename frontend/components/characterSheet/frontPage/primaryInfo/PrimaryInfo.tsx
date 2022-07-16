@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from '../../../UI/Card'
+import { Card } from '../../../UI/containers/Card'
 import ACHIT from './ACHIT'
 import HP from './HP'
 
@@ -11,7 +11,7 @@ const PrimaryInfo = (props: PrimaryInfoProps) => {
 	return (
 		<Card
 			className={
-				'grid grid-cols-3 bg-neutral bg-opacity-70 px-4 py-4 gap-2 min-h-[14%] ' +
+				'grid grid-cols-3 bg-neutral bg-opacity-70 px-4 py-4 gap-2 min-h-[14%]  ' +
 				props.className
 			}
 		>

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
-import { Card } from '../../../UI/Card'
-import HiddenTextField from '../../../UI/HiddenTextField'
+import { Card } from '../../../UI/containers/Card'
+import HiddenTextField from '../../../UI/input/HiddenTextField'
 
 interface MetaEntryProps {
 	className?: string

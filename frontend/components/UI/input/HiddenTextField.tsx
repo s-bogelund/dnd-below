@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-interface ButtonProps {
+interface Props {
 	className?: string
 	value?: string | number
 	onInput: (event: React.FormEvent<HTMLInputElement>) => void
@@ -8,7 +8,7 @@ interface ButtonProps {
 	number?: true | undefined
 }
 
-const HiddenTextField = (props: ButtonProps) => {
+const HiddenTextField: FC<Props> = (props: Props) => {
 	const validateInput = (event: React.FormEvent<HTMLInputElement>) => {
 		//* if number prop not set, accept all input
 		const input = event.currentTarget.value
@@ -25,7 +25,7 @@ const HiddenTextField = (props: ButtonProps) => {
 		<input
 			type="text"
 			className={
-				'input ghost lg:text-md w-full font-medium focus:border-transparent focus-input-outline p-0 bg-transparent text-center h-fit break-words rounded-sm ' +
+				'input lg:text-md w-fit font-medium focus:border-transparent focus-input-outline p-0 bg-transparent text-center h-fit break-words ' +
 				props.className
 			}
 			value={props.value}

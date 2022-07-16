@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
-import HiddenTextField from '../../../UI/HiddenTextField'
+import HiddenTextField from '../../../UI/input/HiddenTextField'
 import { BsFillHexagonFill } from 'react-icons/bs'
+import { BsHexagon } from 'react-icons/bs'
 import { MdShield } from 'react-icons/md'
 import { IconContext } from 'react-icons'
 
@@ -14,16 +15,15 @@ const ACHIT: FC<Props> = ({ armorClass, hitDice }) => {
 	const [HDState, setHDState] = React.useState(hitDice || 8)
 
 	const handleACInput = (event: React.FormEvent<HTMLInputElement>) => {
-		console.log(event.currentTarget.value)
+		const value = event.currentTarget.value
 		if (event.currentTarget.value.length > 2) return
-		setACState(Number(event.currentTarget.value))
+		setACState(Number(value))
 	}
 
 	const handleHDInput = (event: React.FormEvent<HTMLInputElement>) => {
-		const value = Number(event.currentTarget.value)
-		console.log(event.currentTarget.value)
-		if (!value || value > 20) return
-		setHDState(value)
+		const value = event.currentTarget.value
+		if (event.currentTarget.value.length > 2) return
+		setHDState(Number(value))
 	}
 
 	return (
@@ -49,19 +49,21 @@ const ACHIT: FC<Props> = ({ armorClass, hitDice }) => {
 			<div className="flex flex-col justify-center  items-center w-[50%]">
 				{/* <span className="material-icons md-96 text-base-300 text-[9rem] lg:text-[12rem] relative"> */}
 				<IconContext.Provider
-					value={{ className: 'relative text-[8rem] lg:text-[10rem] text-base-300 ' }}
+					value={{
+						className: 'relative text-[8rem] lg:text-[10rem] text-base-300',
+					}}
 				>
-					<BsFillHexagonFill />
+					<BsFillHexagonFill className="border-white" />
 				</IconContext.Provider>
 				<div className="absolute w-[6rem] text-center flex flex-col items-center">
 					<p className="w-full tracking-tighter whitespace-nowrap text-xl lg:text-2xl text-center ">
 						Hit Dice
 					</p>
 					<HiddenTextField
-						className="w-12 lg:w-16 text-center text-neutral-content lg:text-5xl text-4xl font-semibold"
+						className="w-12 lg:w-16 text-center text-neutral-content lg:text-5xl text-4xl font-semibold "
 						value={HDState}
 						onInput={e => handleHDInput(e)}
-					></HiddenTextField>
+					/>
 				</div>
 			</div>
 		</div>

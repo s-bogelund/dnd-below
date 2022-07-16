@@ -1,6 +1,6 @@
 import React from 'react'
-import { Card } from '../../../UI/Card'
-import HiddenTextField from '../../../UI/HiddenTextField'
+import { Card } from '../../../UI/containers/Card'
+import HiddenTextField from '../../../UI/input/HiddenTextField'
 import MetaEntry from './MetaEntry'
 
 interface MetaInfoProps {

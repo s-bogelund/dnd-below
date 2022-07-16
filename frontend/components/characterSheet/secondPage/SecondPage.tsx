@@ -1,7 +1,7 @@
 import React from 'react'
-import Button from '../../Button'
-import BodyContainer from '../../UI/BodyContainer'
-import { Card } from '../../UI/Card'
+import Button from '../../UI/input/Button'
+import BodyContainer from '../../UI/containers/BodyContainer'
+import { Card } from '../../UI/containers/Card'
 import MetaInfo from '../frontPage/metaInfo/MetaInfo'
 
 const SecondPage = () => {

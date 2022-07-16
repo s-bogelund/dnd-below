@@ -1,9 +1,9 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import BodyContainer from '../components/UI/BodyContainer'
-import Button from '../components/Button'
+import BodyContainer from '../components/UI/containers/BodyContainer'
+import Button from '../components/UI/input/Button'
 import React from 'react'
-import { Card } from '../components/UI/Card'
+import { Card } from '../components/UI/containers/Card'
 import FrontPage from '../components/characterSheet/frontPage/FrontPage'
 import CharacterSheet from '../components/characterSheet/CharacterSheet'
 
