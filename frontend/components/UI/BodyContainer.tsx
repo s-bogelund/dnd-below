@@ -10,7 +10,7 @@ const BodyContainer = (props: BodyContainerProps) => {
 	return (
 		<div
 			className={
-				'bg-transparent grid p-4 lg:p-8 h-screen w-screen justify-center items-start ' +
+				'bg-transparent grid p-4 lg:p-8 h-screen w-screen justify-center items-start landscape:h-[1024px] lg:landscape:h-[1366px] ' +
 				props.className
 			}
 		>

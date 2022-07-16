@@ -8,7 +8,7 @@ import 'swiper/css/pagination'
 
 const CharacterSheet = () => {
 	return (
-		<div>
+		<div className="">
 			<Swiper
 				cssMode={true}
 				spaceBetween={80}
