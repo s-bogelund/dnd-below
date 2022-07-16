@@ -15,13 +15,13 @@ const CharacterSheet = () => {
 			pagination={true}
 			modules={[Pagination]}
 			slidesPerView={1}
-			className="swipe-fix h-[100%]"
+			className="swipe-fix "
 		>
-			<SwiperSlide className="swipe-fix">
+			<SwiperSlide className="swipe-fix flex flex-row justify-center ">
 				{/* <FrontPage /> */}
 				<FrontPageFlex />
 			</SwiperSlide>
-			<SwiperSlide className="swipe-fix">
+			<SwiperSlide className="swipe-fix flex flex-row justify-center content-center items-center">
 				<SecondPage />
 			</SwiperSlide>
 		</Swiper>

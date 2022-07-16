@@ -4,7 +4,10 @@ module.exports = {
 	future: {
 		hoverOnlyWhenSupported: true,
 	},
-	content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+	content: [
+		'./pages/**/*.{html,js,ts,jsx,tsx}',
+		'./components/**/*.{html,js,ts,jsx,tsx}',
+	],
 	theme: {
 		screens: {
 			sm: '480px',
@@ -53,6 +56,10 @@ module.exports = {
 				'span-65': 'span 65 / span 65',
 				'span-100': 'span 100 / span 100',
 			},
+		},
+		fontFamily: {
+			hexagon: ['Material Symbols', 'bold'],
+			shield: ['Material Symbols', 'bold'],
 		},
 	},
 	plugins: [
