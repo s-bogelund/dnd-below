@@ -15,7 +15,7 @@ const PrimaryInfo = (props: PrimaryInfoProps) => {
 				props.className
 			}
 		>
-			<ACHIT />
+			<ACHIT armorClass={18} hitDice={10} />
 			<HP />
 			<div className="flex flex-col h-full bg-slate-500"></div>
 		</Card>

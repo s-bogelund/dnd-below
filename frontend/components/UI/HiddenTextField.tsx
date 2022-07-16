@@ -2,7 +2,7 @@ import React from 'react'
 
 interface ButtonProps {
 	className?: string
-	value?: string
+	value?: string | number
 	onInput?: (event: React.ChangeEvent<HTMLInputElement>) => void
 	placeholder?: string
 }
