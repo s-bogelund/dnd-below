@@ -3,11 +3,24 @@ import React from 'react'
 interface ButtonProps {
 	className?: string
 	value?: string | number
-	onInput?: (event: React.ChangeEvent<HTMLInputElement>) => void
+	onInput: (event: React.FormEvent<HTMLInputElement>) => void
 	placeholder?: string
+	number?: true | undefined
 }
 
 const HiddenTextField = (props: ButtonProps) => {
+	const validateInput = (event: React.FormEvent<HTMLInputElement>) => {
+		//* if number prop not set, accept all input
+		const input = event.currentTarget.value
+		if (!props.number || input.length < 1) {
+			props.onInput(event)
+			return
+		}
+
+		//* if number prop is set, accept only numbers
+		const regex = /^[0-9]*$/
+		if (regex.test(input)) props.onInput(event)
+	}
 	return (
 		<input
 			type="text"
@@ -16,7 +29,7 @@ const HiddenTextField = (props: ButtonProps) => {
 				props.className
 			}
 			value={props.value}
-			onInput={props.onInput}
+			onInput={event => validateInput(event)}
 			placeholder={props.placeholder}
 		></input>
 	)

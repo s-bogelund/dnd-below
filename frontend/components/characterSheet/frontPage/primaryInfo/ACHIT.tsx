@@ -5,25 +5,25 @@ import { MdShield } from 'react-icons/md'
 import { IconContext } from 'react-icons'
 
 interface Props {
-	armorClass: number
-	hitDice: number
+	armorClass?: number
+	hitDice?: number
 }
 
 const ACHIT: FC<Props> = ({ armorClass, hitDice }) => {
 	const [ACState, setACState] = React.useState(armorClass || 10)
 	const [HDState, setHDState] = React.useState(hitDice || 8)
 
-	const handleACInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleACInput = (event: React.FormEvent<HTMLInputElement>) => {
 		console.log(event.currentTarget.value)
 		if (event.currentTarget.value.length > 2) return
 		setACState(Number(event.currentTarget.value))
 	}
 
-	const handleHDInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleHDInput = (event: React.FormEvent<HTMLInputElement>) => {
 		const value = Number(event.currentTarget.value)
 		console.log(event.currentTarget.value)
-		if (value > 20) return
-		setHDState(Number(event.currentTarget.value))
+		if (!value || value > 20) return
+		setHDState(value)
 	}
 
 	return (
@@ -41,6 +41,7 @@ const ACHIT: FC<Props> = ({ armorClass, hitDice }) => {
 					<HiddenTextField
 						className="w-12 lg:w-16 text-center text-neutral-content lg:text-5xl text-4xl font-semibold"
 						value={ACState}
+						number={true}
 						onInput={e => handleACInput(e)}
 					/>
 				</div>
