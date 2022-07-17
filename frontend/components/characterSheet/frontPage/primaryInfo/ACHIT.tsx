@@ -4,6 +4,7 @@ import { BsFillHexagonFill } from 'react-icons/bs'
 import { BsHexagon } from 'react-icons/bs'
 import { MdShield } from 'react-icons/md'
 import { IconContext } from 'react-icons'
+import { validateNumberParameters } from '../../../../utils/validation'
 
 interface Props {
 	armorClass?: number
@@ -16,14 +17,19 @@ const ACHIT: FC<Props> = ({ armorClass, hitDice }) => {
 
 	const handleACInput = (event: React.FormEvent<HTMLInputElement>) => {
 		const value = event.currentTarget.value
-		if (event.currentTarget.value.length > 2) return
+		const validate = validateNumberParameters(Number(value), 0, 49)
+		if (!validate) return
+
 		setACState(Number(value))
 	}
 
 	const handleHDInput = (event: React.FormEvent<HTMLInputElement>) => {
-		const value = event.currentTarget.value
-		if (event.currentTarget.value.length > 2) return
-		setHDState(Number(value))
+		const value = Number(event.currentTarget.value)
+		const validated = validateNumberParameters(value, 0, 20)
+		console.log('validated:', validated, value)
+		if (!validated) return
+
+		setHDState(value)
 	}
 
 	return (
@@ -62,6 +68,7 @@ const ACHIT: FC<Props> = ({ armorClass, hitDice }) => {
 					<HiddenTextField
 						className="w-12 lg:w-16 text-center text-neutral-content lg:text-5xl text-4xl font-semibold "
 						value={HDState}
+						number={true}
 						onInput={e => handleHDInput(e)}
 					/>
 				</div>

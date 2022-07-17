@@ -2,6 +2,7 @@ import React from 'react'
 import { Card } from '../../../UI/containers/Card'
 import ACHIT from './ACHIT'
 import HP from './HP'
+import IIS from './IIS'
 
 interface PrimaryInfoProps {
 	className?: string
@@ -17,7 +18,7 @@ const PrimaryInfo = (props: PrimaryInfoProps) => {
 		>
 			<ACHIT armorClass={18} hitDice={10} />
 			<HP />
-			<div className="flex flex-col h-full bg-slate-500"></div>
+			<IIS inspiration={0} speed={25} initiative={0} />
 		</Card>
 	)
 }

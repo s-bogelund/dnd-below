@@ -3,12 +3,15 @@ import Button from '../../../UI/input/Button'
 import { Card } from '../../../UI/containers/Card'
 import HiddenTextField from '../../../UI/input/HiddenTextField'
 import HiddenButton from '../../../UI/input/HiddenButton'
+import { validateNumberParameters } from '../../../../utils/validation'
 
 interface HPProps {
 	className?: string
 	maxHp?: number
 	currentHp?: number
 }
+
+const MAXIMUM_HP_VALUE = 999
 
 const HP: FC<HPProps> = props => {
 	const [currentHp, setCurrentHp] = React.useState(21)
@@ -23,9 +26,9 @@ const HP: FC<HPProps> = props => {
 			return
 		}
 
-		if (!validateHp(value)) return
-
 		const newHp = parseInt(value)
+		const validated = validateNumberParameters(newHp, 0, MAXIMUM_HP_VALUE)
+		if (!validated) return
 
 		if (currentHp + newHp < 0) {
 			setCurrentHp(0)
@@ -44,11 +47,10 @@ const HP: FC<HPProps> = props => {
 			return
 		}
 
-		console.log('value', value)
-		if (validateHp(value) === false) {
-			return
-		}
 		const newHp = parseInt(value)
+		const validated = validateNumberParameters(newHp, 0, MAXIMUM_HP_VALUE)
+		if (!validated) return
+
 		console.log('newHp', newHp)
 		tempHdLogic(currentHp, newHp)
 		setMaxHp(newHp)
@@ -102,14 +104,6 @@ const HP: FC<HPProps> = props => {
 			</Card>
 		</div>
 	)
-
-	function validateHp(newValue: string): boolean {
-		const value = +newValue
-		console.log(value, typeof value)
-
-		if (value > 999) return false
-		return true
-	}
 }
 
 export default HP
