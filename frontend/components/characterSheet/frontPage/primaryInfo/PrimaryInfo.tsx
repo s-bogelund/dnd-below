@@ -12,7 +12,7 @@ const PrimaryInfo = (props: PrimaryInfoProps) => {
 	return (
 		<Card
 			className={
-				'grid grid-cols-3 bg-neutral bg-opacity-70 px-4 py-4 gap-2 min-h-[14%]  ' +
+				'grid grid-cols-3 place-center justify-center content-center bg-neutral bg-opacity-70 px-4 py-2 gap-2 min-h-[14%] h-auto ' +
 				props.className
 			}
 		>

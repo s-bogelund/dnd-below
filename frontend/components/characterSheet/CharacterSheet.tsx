@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/pagination'
-import FrontPageFlex from './frontPage/FrontPageFlex'
 
 const CharacterSheet = () => {
 	return (
@@ -19,7 +18,7 @@ const CharacterSheet = () => {
 		>
 			<SwiperSlide className="swipe-fix flex flex-row justify-center ">
 				{/* <FrontPage /> */}
-				<FrontPageFlex />
+				<FrontPage />
 			</SwiperSlide>
 			<SwiperSlide className="swipe-fix flex flex-row justify-center content-center items-center">
 				<SecondPage />

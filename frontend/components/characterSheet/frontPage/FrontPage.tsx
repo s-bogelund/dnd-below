@@ -4,17 +4,18 @@ import BodyContainer from '../../UI/containers/BodyContainer'
 import { Card } from '../../UI/containers/Card'
 import MetaInfo from './metaInfo/MetaInfo'
 import PrimaryInfo from './primaryInfo/PrimaryInfo'
+import Stats from './stats/Stats'
 
 const FrontPage = () => {
 	return (
-		<BodyContainer className="grid-cols-5 grid-rows-45 bg-base-300 w-screen place-content-between justify-between items-between content-between gap-4 lg:gap-4">
-			<MetaInfo
-				className="col-span-full row-span-8 h-full"
-				characterName="Halfdan Helligskæg"
-			/>
-			<PrimaryInfo className="w-full row-span-15 span col-span-full h-full " />
-			<Card className="bg-neutral h-full rounded-md col-span-2 row-span-20"></Card>
-			<Card className="bg-neutral h-full rounded-md col-span-3 row-span-20 "></Card>
+		<BodyContainer className="w-screen gap-4 bg-base-300">
+			<MetaInfo className="h-fit " characterName="Halfdan Helligskæg" />
+			<PrimaryInfo className="w-full shrink " />
+			<div className="bg-transparent grid grid-flow-col grid-rows-5 gap-4 grid-cols-5 min-h[20%] h-[70%] rounded-md ">
+				<Card className="w-full h-full flex flex-col bg-neutral row-span-2 col-span-2 justify-center content-center"></Card>
+				<Card className="w-full h-full flex flex-col row-span-3 bg-neutral col-span-2 justify-center content-center"></Card>
+				<Stats className="w-full bg-transparent h-full col-span-3 row-span-5" />
+			</div>
 		</BodyContainer>
 	)
 }
