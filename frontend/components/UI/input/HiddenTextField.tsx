@@ -6,6 +6,8 @@ interface Props {
 	onInput: (event: React.FormEvent<HTMLInputElement>) => void
 	placeholder?: string
 	number?: true | undefined
+	onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void
+	onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void
 }
 
 const HiddenTextField: FC<Props> = (props: Props) => {
@@ -19,7 +21,9 @@ const HiddenTextField: FC<Props> = (props: Props) => {
 
 		//* if number prop is set, accept only numbers
 		const regex = /^[0-9]*$/
-		if (regex.test(input)) props.onInput(event)
+		if (regex.test(input)) {
+			props.onInput(event)
+		}
 	}
 	return (
 		<input
@@ -31,6 +35,8 @@ const HiddenTextField: FC<Props> = (props: Props) => {
 			value={props.value}
 			onInput={event => validateInput(event)}
 			placeholder={props.placeholder}
+			onFocus={props.onFocus}
+			onBlur={props.onBlur}
 		></input>
 	)
 }
