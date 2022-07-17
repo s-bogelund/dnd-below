@@ -2,6 +2,7 @@
 	"extends": "next/core-web-vitals",
 
 	"rules": {
-		"code": "80"
+		"code": "80",
+		"object-curly-spacing": 1
 	}
 }

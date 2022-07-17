@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { validateNumberParameters } from '../../../../utils/validation'
 import { Card } from '../../../UI/containers/Card'
 import HiddenTextField from '../../../UI/input/HiddenTextField'
+import ModifierInput from '../../../UI/input/ModifierInput'
 
 interface IISProps {
 	inspiration: number
@@ -19,7 +20,9 @@ const IIS: FC<IISProps> = props => {
 	const [speed, setSpeed] = React.useState(props.speed)
 	const [initiative, setInitiative] = React.useState(props.initiative)
 
-	const handleInspiration = (event: React.FormEvent<HTMLInputElement>): void => {
+	const handleInspiration = (
+		event: React.FormEvent<HTMLInputElement>
+	): void => {
 		const value = event.currentTarget.value
 		if (value.length < 1) {
 			setInspiration(0)
@@ -39,11 +42,30 @@ const IIS: FC<IISProps> = props => {
 		}
 		const newVal = parseInt(value)
 		const validated = validateNumberParameters(newVal, 0, MAX_INITIATIVE)
+		console.log('initiative will be set to: ' + newVal)
 		if (!validated) return
 		setInitiative(newVal)
 	}
 
-	const handleSpeed = (event: React.FormEvent<HTMLInputElement>): void => {}
+	const handleSpeed = (event: React.FormEvent<HTMLInputElement>): void => {
+		let value = event.currentTarget.value
+		if (value.length < 1) {
+			setSpeed(0)
+			return
+		}
+
+		while (value[0] === '0') {
+			console.log('value0', value[0])
+			console.log('value1', value[1])
+
+			value = value.substring(1)
+		}
+
+		const newVal = parseInt(value)
+		const validated = validateNumberParameters(newVal, 0, MAX_SPEED)
+		if (!validated) return
+		setSpeed(newVal)
+	}
 
 	return (
 		<div className="flex flex-col h-full w-full bg-transparent py-2 px-1 gap-2">
@@ -51,31 +73,33 @@ const IIS: FC<IISProps> = props => {
 				<span className="text-xl tracking-tight">Inspiration</span>
 				<HiddenTextField
 					onInput={event => handleInspiration(event)}
-					value={'+' + inspiration}
+					value={inspiration}
 					number={true}
 					onFocus={event => event.currentTarget.select()}
-					className="w-12 text-2xl font-semibold"
+					className="w-12 text-2xl lg:text-3xl lg:mb-3 font-semibold"
 				/>
 			</Card>
-			<div className="flex flex-row h-[50%] w-full bg-red-50 gap-2">
+			<div className="flex flex-row h-[50%] w-full gap-2">
 				<Card className="bg-base-300 w-[50%] h-full rounded-sm">
 					<span className="text-xl tracking-tight">Initiative</span>
-					<HiddenTextField
+					<ModifierInput
 						onInput={event => handleInitiative(event)}
-						value={'+' + initiative}
-						number={true}
+						value={initiative}
 						onFocus={event => event.currentTarget.select()}
-						className="w-12 text-2xl font-semibold"
+						showPlus={initiative > 0}
+						className="w-12  font-semibold"
+						fontSize="text-2xl lg:text-3xl"
 					/>
 				</Card>
 				<Card className="bg-base-300 w-[50%] h-full rounded-sm">
 					<span className="text-xl tracking-tight">Speed</span>
+
 					<HiddenTextField
 						onInput={event => handleSpeed(event)}
 						value={speed}
 						number={true}
 						onFocus={event => event.currentTarget.select()}
-						className="w-12 text-2xl font-semibold"
+						className="w-12 text-2xl lg:text-3xl font-semibold"
 					/>
 				</Card>
 			</div>
