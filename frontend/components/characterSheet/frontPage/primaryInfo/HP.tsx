@@ -13,10 +13,12 @@ interface HPProps {
 const HP: FC<HPProps> = props => {
 	const [currentHp, setCurrentHp] = React.useState(21)
 	const [maxHp, setMaxHp] = React.useState(29)
+	const [tempHpAdded, setTempHpAdded] = React.useState(false)
 
 	const handleCurrentHp = (event: React.FormEvent<HTMLInputElement>) => {
 		const value = event.currentTarget.value
 		if (value.length < 1) {
+			tempHdLogic(0, maxHp)
 			setCurrentHp(0)
 			return
 		}
@@ -29,38 +31,38 @@ const HP: FC<HPProps> = props => {
 			setCurrentHp(0)
 			return
 		}
+
+		tempHdLogic(newHp, maxHp)
 		setCurrentHp(newHp)
 	}
 
 	const handleMaxHp = (event: React.FormEvent<HTMLInputElement>): void => {
 		const value = event.currentTarget.value
 		if (value.length < 1) {
-			console.log('emptry string')
+			tempHdLogic(0, 0)
 			setMaxHp(0)
 			return
 		}
 
 		console.log('value', value)
 		if (validateHp(value) === false) {
-			console.log('invalid', value)
 			return
 		}
 		const newHp = parseInt(value)
+		console.log('newHp', newHp)
+		tempHdLogic(currentHp, newHp)
+		setMaxHp(newHp)
+	}
 
-		console.log('newHp', newHp)
-		if (newHp === NaN) return
-		console.log('newHp', newHp)
-		setMaxHp(+event.currentTarget.value)
+	const tempHdLogic = (newCurrentHp: number, maxHp: number): void => {
+		if (newCurrentHp > maxHp) setTempHpAdded(true)
+		else setTempHpAdded(false)
 	}
 
 	const onHpButtonClick = (hpChange: number): void => {
-		if (currentHp + hpChange > maxHp || currentHp + hpChange < 0) return
+		if (currentHp + hpChange < 0) return
+		tempHdLogic(currentHp + hpChange, maxHp)
 		setCurrentHp(currentHp + hpChange)
-	}
-
-	const handleCurrentHpBlur = (): void => {
-		console.log('HandleCurrentHpBlur called')
-		if (currentHp > maxHp) setCurrentHp(maxHp)
 	}
 
 	return (
@@ -80,9 +82,11 @@ const HP: FC<HPProps> = props => {
 					<div className="text-xl font-semibold justify-self-start -mx-2">Current HP</div>
 					<HiddenTextField
 						onInput={event => handleCurrentHp(event)}
-						onBlur={() => handleCurrentHpBlur()}
 						number={true}
-						className=" h-fit self-center w-[60%] text-5xl lg:text-8xl"
+						className={
+							' h-fit self-center w-[60%] text-5xl lg:text-8xl ' +
+							(tempHpAdded ? ' text-success font-bold' : '')
+						}
 						value={currentHp}
 						onFocus={event => event.currentTarget.select()}
 					/>
@@ -104,8 +108,6 @@ const HP: FC<HPProps> = props => {
 		console.log(value, typeof value)
 
 		if (value > 999) return false
-
-		console.log('value is now', value, typeof value)
 		return true
 	}
 }

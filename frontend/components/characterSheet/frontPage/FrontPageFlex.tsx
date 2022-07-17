@@ -18,7 +18,7 @@ const FrontPageFlex = () => {
 				<Button className="btn-accent">accent</Button>
 				<Button className="btn-warning">warning</Button>
 				<Button className="btn-succes">warning</Button>
-				<Button className="btn-neutral">neutral</Button>
+				<Button className="btn-success">success</Button>
 				<Button className="btn-hidden">hidden</Button>
 			</Card>
 		</BodyContainerFlex>
