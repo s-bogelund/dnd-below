@@ -11,13 +11,16 @@ interface Props {
 	hitDice?: number
 }
 
+const MAX_HD_VALUE = 20
+const MAX_AC_VALUE = 49
+
 const ACHIT: FC<Props> = ({ armorClass, hitDice }) => {
 	const [ACState, setACState] = React.useState(armorClass || 10)
 	const [HDState, setHDState] = React.useState(hitDice || 8)
 
 	const handleACInput = (event: React.FormEvent<HTMLInputElement>) => {
 		const value = event.currentTarget.value
-		const validate = validateNumberParameters(Number(value), 0, 49)
+		const validate = validateNumberParameters(Number(value), 0, MAX_AC_VALUE)
 		if (!validate) return
 
 		setACState(Number(value))
@@ -25,7 +28,7 @@ const ACHIT: FC<Props> = ({ armorClass, hitDice }) => {
 
 	const handleHDInput = (event: React.FormEvent<HTMLInputElement>) => {
 		const value = Number(event.currentTarget.value)
-		const validated = validateNumberParameters(value, 0, 20)
+		const validated = validateNumberParameters(value, 0, MAX_HD_VALUE)
 		console.log('validated:', validated, value)
 		if (!validated) return
 

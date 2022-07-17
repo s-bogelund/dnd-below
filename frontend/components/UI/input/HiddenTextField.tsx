@@ -37,6 +37,11 @@ const HiddenTextField: FC<Props> = (props: Props) => {
 			placeholder={props.placeholder}
 			onFocus={props.onFocus}
 			onBlur={props.onBlur}
+			onKeyDown={event => {
+				if (event.key === 'Enter') {
+					event.currentTarget.blur()
+				}
+			}}
 		></input>
 	)
 }
