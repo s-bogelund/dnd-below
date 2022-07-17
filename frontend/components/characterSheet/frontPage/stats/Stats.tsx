@@ -7,6 +7,15 @@ interface StatsProps {
 	className?: string
 }
 
+const testStats = [
+	{ name: 'Strength', modifier: 2, proficient: true },
+	{ name: 'Dexterity', modifier: 2, proficient: true },
+	{ name: 'Constitution', modifier: 2, proficient: false },
+	{ name: 'Intelligence', modifier: 2, proficient: false },
+	{ name: 'Wisdom', modifier: 2, proficient: true },
+	{ name: 'Charisma', modifier: 2, proficient: true },
+]
+
 const Stats: FC<StatsProps> = props => {
 	return (
 		<div
@@ -15,7 +24,7 @@ const Stats: FC<StatsProps> = props => {
 				props.className
 			}
 		>
-			<StatsList className="justify-center" />
+			<StatsList className="justify-center" stats={testStats} />
 			<StatsList />
 			<StatsList />
 			<StatsList />

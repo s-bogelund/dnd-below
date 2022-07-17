@@ -52,15 +52,22 @@ const MetaInfo = (props: MetaInfoProps) => {
 	return (
 		<Card
 			className={
-				'grid grid-cols-10 bg-neutral bg-opacity-70 p-3 md:pb-4 gap-2 ' + props.className
+				'grid grid-cols-10 bg-neutral bg-opacity-70 p-3 md:pb-4 gap-2 ' +
+				props.className
 			}
 		>
-			<div className={'flex flex-col col-span-4 min-h-[7rem] h-[40%] max-h-[12rem]'}>
-				<p className="text-sm mb-1 lg:font-semibold font-medium">Character Name</p>
+			<div
+				className={
+					'flex flex-col col-span-4 min-h-[7rem] h-[40%] max-h-[12rem]'
+				}
+			>
+				<p className="text-sm mb-1 lg:font-semibold font-medium">
+					Character Name
+				</p>
 				<Card className=" lg:px-2 md:px-1 font-semibold text-base-content rounded-sm border-[1px] border-white border-opacity-20 h-full">
 					<HiddenTextField
 						className={
-							'input ghost lg:text-3xl md:text-2xl h-full w-full font-medium focus:border-transparent focus-input-outline p-0 bg-transparent text-center rounded-sm  '
+							'input lg:text-3xl md:text-2xl h-full w-full font-medium focus:border-transparent focus-input-outline p-0 bg-transparent text-center rounded-sm '
 						}
 						value={characterName}
 						onInput={event => setCharacterName(event.currentTarget.value)}

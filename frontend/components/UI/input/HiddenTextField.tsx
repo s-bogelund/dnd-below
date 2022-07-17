@@ -34,7 +34,7 @@ const HiddenTextField: FC<Props> = (props: Props) => {
 		<input
 			// type="text"
 			className={
-				'input lg:text-md w-fit font-medium focus:border-transparent focus-input-outline p-0 bg-transparent text-center h-fit break-words ' +
+				'input focus:border-transparent p-0 bg-transparent h-fit ' +
 				props.className
 			}
 			value={props.value}

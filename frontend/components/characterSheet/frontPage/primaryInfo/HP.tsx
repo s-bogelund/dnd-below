@@ -76,17 +76,19 @@ const HP: FC<HPProps> = props => {
 					onInput={event => handleMaxHp(event)}
 					onFocus={event => event.currentTarget.select()}
 					value={maxHp}
-					className="flex text-xl font-semibold max-w-[25%] w-fit rounded-sm "
+					className="flex text-xl font-semibold max-w-[25%] w-fit rounded-sm text-center "
 				></HiddenTextField>
 			</Card>
 			<Card className="flex flex-row h-full w-full rounded-sm px-0 relative">
 				<div className="flex flex-col h-full lg:gap-2 w-[85%] px-0 py-1">
-					<div className="text-xl font-semibold justify-self-start -mx-2">Current HP</div>
+					<div className="text-xl font-semibold justify-self-start -mx-2">
+						Current HP
+					</div>
 					<HiddenTextField
 						onInput={event => handleCurrentHp(event)}
 						number={true}
 						className={
-							' h-fit self-center w-[60%] text-5xl lg:text-8xl ' +
+							' h-fit self-center w-[60%] text-5xl lg:text-8xl text-center ' +
 							(tempHpAdded ? ' text-success font-bold' : '')
 						}
 						value={currentHp}
@@ -94,10 +96,16 @@ const HP: FC<HPProps> = props => {
 					/>
 				</div>
 				<div className="flex flex-col p-12 h-full w-fit justify-between lg:justify-center gap-3 lg:gap-4 px-1 absolute right-3 py-0">
-					<HiddenButton onClick={() => onHpButtonClick(+1)} className="text-4xl btn-md  ">
+					<HiddenButton
+						onClick={() => onHpButtonClick(+1)}
+						className="text-4xl btn-md  "
+					>
 						+
 					</HiddenButton>
-					<HiddenButton className="text-4xl btn-md " onClick={() => onHpButtonClick(-1)}>
+					<HiddenButton
+						className="text-4xl btn-md "
+						onClick={() => onHpButtonClick(-1)}
+					>
 						-
 					</HiddenButton>
 				</div>

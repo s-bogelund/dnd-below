@@ -18,12 +18,12 @@ const MetaEntry = (props: MetaEntryProps) => {
 			<p className="text-xs mb-1 font-medium">{props.header}</p>
 			<Card
 				className={
-					'text-sm lg:text-md lg:py-[0.6rem] md:py-[0.4rem] rounded-sm lg:px-4 md:px-2 text-base-content border-[1px] border-white border-opacity-20 h-full form-control ' +
+					'lg:py-[0.6rem] md:py-[0.4rem] rounded-sm lg:px-4 md:px-2 text-base-content border-[.5px] border-white border-opacity-20 h-full form-control ' +
 					bodyTextSize
 				}
 			>
 				<HiddenTextField
-					className={bodyTextSize}
+					className={'text-center ' + bodyTextSize}
 					value={bodyText}
 					onInput={event => handleBodyText(event.currentTarget)}
 				></HiddenTextField>

@@ -76,7 +76,7 @@ const IIS: FC<IISProps> = props => {
 					value={inspiration}
 					number={true}
 					onFocus={event => event.currentTarget.select()}
-					className="w-12 text-2xl lg:text-3xl lg:mb-3 font-semibold"
+					className="w-12 text-2xl lg:text-3xl lg:mb-3 font-semibold text-center"
 				/>
 			</Card>
 			<div className="flex flex-row h-[50%] w-full gap-2">
@@ -87,7 +87,7 @@ const IIS: FC<IISProps> = props => {
 						value={initiative}
 						onFocus={event => event.currentTarget.select()}
 						showPlus={initiative > 0}
-						className="w-12  font-semibold"
+						className="w-12  font-semibold text-center"
 						fontSize="text-2xl lg:text-3xl"
 					/>
 				</Card>
@@ -99,7 +99,7 @@ const IIS: FC<IISProps> = props => {
 						value={speed}
 						number={true}
 						onFocus={event => event.currentTarget.select()}
-						className="w-12 text-2xl lg:text-3xl font-semibold"
+						className="w-12 text-2xl lg:text-3xl font-semibold text-center"
 					/>
 				</Card>
 			</div>
