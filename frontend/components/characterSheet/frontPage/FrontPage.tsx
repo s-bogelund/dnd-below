@@ -4,8 +4,8 @@ import BodyContainer from '../../UI/containers/BodyContainer'
 import { Card } from '../../UI/containers/Card'
 import MetaInfo from './metaInfo/MetaInfo'
 import PrimaryInfo from './primaryInfo/PrimaryInfo'
-import Stats from './stats/Stats'
-import { AbilityScore, getData } from '../../../utils/dummyData'
+import Stats from './stats/AbilityScores'
+import { IAbilityScore, getData } from '../../../utils/dummyData'
 
 const FrontPage = () => {
 	const [TEMP_DATA, setTEMP_DATA] = React.useState(null)

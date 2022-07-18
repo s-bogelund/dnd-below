@@ -42,7 +42,6 @@ const IIS: FC<IISProps> = props => {
 		}
 		const newVal = parseInt(value)
 		const validated = validateNumberParameters(newVal, 0, MAX_INITIATIVE)
-		console.log('initiative will be set to: ' + newVal)
 		if (!validated) return
 		setInitiative(newVal)
 	}
@@ -55,9 +54,6 @@ const IIS: FC<IISProps> = props => {
 		}
 
 		while (value[0] === '0') {
-			console.log('value0', value[0])
-			console.log('value1', value[1])
-
 			value = value.substring(1)
 		}
 

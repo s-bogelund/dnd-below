@@ -51,7 +51,6 @@ const HP: FC<HPProps> = props => {
 		const validated = validateNumberParameters(newHp, 0, MAXIMUM_HP_VALUE)
 		if (!validated) return
 
-		console.log('newHp', newHp)
 		tempHdLogic(currentHp, newHp)
 		setMaxHp(newHp)
 	}

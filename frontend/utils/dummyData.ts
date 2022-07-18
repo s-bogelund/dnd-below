@@ -1,7 +1,7 @@
 const BASE_STRING = 'https://www.dnd5eapi.co/api/ability-scores/'
-const SUB_STRINGS = ['str', 'dex', 'con', 'int', 'wis', 'cha']
+const SUB_STRINGS = ['con', 'str', 'dex', 'int', 'wis', 'cha']
 
-export interface Skill {
+export interface ISkill {
 	name: string
 	index: string
 	url?: string
@@ -9,12 +9,24 @@ export interface Skill {
 	modifier: number
 }
 
-export interface AbilityScore {
+export interface IAbilityScore {
 	name: string
 	fullName: string
 	desc: string[]
+	score: number
 	savingThrows: string[]
-	skills: Skill[]
+	skills: ISkill[]
+}
+
+export function isIAbilityScore(obj: any): obj is IAbilityScore {
+	return (
+		obj.name &&
+		obj.fullName &&
+		obj.desc &&
+		obj.score &&
+		obj.savingThrows &&
+		obj.skills
+	)
 }
 
 const fetchApi = async (subString: string) => {
@@ -25,7 +37,7 @@ const fetchApi = async (subString: string) => {
 
 export const fetchAllData = async () => {
 	let data = await Promise.all(SUB_STRINGS.map(fetchApi))
-	console.log(data)
+	// console.log(data)
 	data.forEach(item => {
 		delete item.data?.url
 		delete item.data?.index
@@ -43,18 +55,18 @@ export const fetchAllData = async () => {
 }
 
 export const modifyData = () => {
-	interface newStatItem extends AbilityScore {
+	interface newStatItem extends IAbilityScore {
 		savingThrow: { value: number; proficient: boolean }
 	}
 
 	const data: any[] = JSON.parse(localStorage.getItem('abilityScores') || '[]')
-	console.log(data)
+	// console.log(data)
 	const skills = data.map(item => item.data?.skills)
 	skills?.forEach(item => {
 		delete item?.url
 	})
 
-	console.log(skills)
+	// console.log(skills)
 
 	// Adding score and saving throw to each ability score
 	let newData: any[] = data.map(item => {
@@ -73,7 +85,7 @@ export const modifyData = () => {
 
 	// adding saving throw to list of skills
 	newData.forEach(item => {
-		const skills: Skill[] = item.skills
+		const skills: ISkill[] = item.skills
 
 		// Sort the skills by name
 		skills.sort((a, b) => {
@@ -101,13 +113,21 @@ export const modifyData = () => {
 		})
 	})
 	// persistance handled by localStorage for now
-	console.log('Final data', newData)
+	// console.log('Final data', newData)
 	localStorage.setItem('abilityScores', JSON.stringify(newData))
 }
 
 export const getData = async (): Promise<any> => {
-	const data = await JSON.parse(localStorage.getItem('abilityScores') || '[]')
-	console.log('data:', data)
+	let data = await JSON.parse(localStorage.getItem('abilityScos') || '[]')
+	if (data.length < 1) {
+		await fetchAllData()
+		modifyData()
+	}
+
+	data = await JSON.parse(localStorage.getItem('abilityScores') || '[]')
+	if (data.length < 1) console.log('error fetching data')
+
+	// console.log('data:', data)
 	let resolved = await Promise.resolve(data)
 	return resolved
 }

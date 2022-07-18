@@ -29,7 +29,6 @@ const ACHIT: FC<Props> = ({ armorClass, hitDice }) => {
 	const handleHDInput = (event: React.FormEvent<HTMLInputElement>) => {
 		const value = Number(event.currentTarget.value)
 		const validated = validateNumberParameters(value, 0, MAX_HD_VALUE)
-		console.log('validated:', validated, value)
 		if (!validated) return
 
 		setHDState(value)
@@ -39,7 +38,9 @@ const ACHIT: FC<Props> = ({ armorClass, hitDice }) => {
 		<div className="flex flex-row justify-between content-between h-full w-[100%] gap-1 p-1">
 			<div className="flex flex-col w-[50%] justify-center items-center -ml-3">
 				<IconContext.Provider
-					value={{ className: 'relative lg:text-[11rem] text-[9rem] text-base-300 ' }}
+					value={{
+						className: 'relative lg:text-[11rem] text-[9rem] text-base-300 ',
+					}}
 				>
 					<MdShield />
 				</IconContext.Provider>

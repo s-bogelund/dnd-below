@@ -1,3 +1,4 @@
+import { PropaneRounded } from '@mui/icons-material'
 import React, { FC, ReactElement, useEffect } from 'react'
 import { validateNumberParameters } from '../../../../../utils/validation'
 import { Card } from '../../../../UI/containers/Card'
@@ -17,20 +18,26 @@ interface StatsLineProps {
 
 const MAX_MODIFIER = 20
 
-const StatLine: FC<StatsLineProps> = props => {
-	const [stat, setStat] = React.useState(props.stat)
+const Skill: FC<StatsLineProps> = ({
+	className,
+	stat,
+	onProficiencyChange,
+	onModifierChange,
+}) => {
 	const handleModifierChange = (event: React.FormEvent<HTMLInputElement>) => {
 		const value = Number(event.currentTarget.value)
 		const validate = validateNumberParameters(value, 0, MAX_MODIFIER)
 
 		if (!validate) return
 
-		props.onModifierChange(event)
+		onModifierChange(event)
 	}
 
-	// useEffect(() => {
-	// 	console.log(stat)
-	// }, [stat.proficient])
+	useEffect(() => {
+		if (stat.name.toLowerCase() === 'acrobatics') {
+			console.log(stat.proficient)
+		}
+	}, [stat])
 
 	return (
 		<div className="grid grid-cols-stat-line lg:grid-cols-stat-lineLg xl:grid-cols-stat-lineXl grid-rows-1 place-items-center w-full h-fit min-h-8 px-[1px] lg:py-1 rounded-sm">
@@ -38,7 +45,7 @@ const StatLine: FC<StatsLineProps> = props => {
 				type="checkbox"
 				className=" radio radio-xs lg:radio-sm radio-primary text-black mt-1"
 				checked={stat.proficient}
-				onChange={() => props.onProficiencyChange(stat.name)}
+				onChange={() => onProficiencyChange(stat.name)}
 			/>
 			<div className="grid place-center justify-center content-center items-center pl-[2px] lg:pl-2 -ml-1">
 				<ModifierInput
@@ -60,4 +67,4 @@ const StatLine: FC<StatsLineProps> = props => {
 	)
 }
 
-export default StatLine
+export default Skill

@@ -5,9 +5,11 @@ import HiddenTextField from '../../../../UI/input/HiddenTextField'
 interface StatHeaderProps {
 	className?: string
 	statName?: string
+	description?: string[]
+	score?: number
 }
 
-const StatHeader: FC<StatHeaderProps> = props => {
+const ASHeader: FC<StatHeaderProps> = props => {
 	return (
 		<Card
 			className={
@@ -21,7 +23,7 @@ const StatHeader: FC<StatHeaderProps> = props => {
 
 			<HiddenTextField
 				onInput={event => console.log(event)}
-				value={1}
+				value={props.score}
 				number={true}
 				onFocus={event => event.currentTarget.select()}
 				className="w-12 text-2xl lg:text-3xl font-semibold text-center"
@@ -30,4 +32,4 @@ const StatHeader: FC<StatHeaderProps> = props => {
 	)
 }
 
-export default StatHeader
+export default ASHeader
