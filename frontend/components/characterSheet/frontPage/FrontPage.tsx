@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Button from '../../UI/input/Button'
 import BodyContainer from '../../UI/containers/BodyContainer'
 import { Card } from '../../UI/containers/Card'
 import MetaInfo from './metaInfo/MetaInfo'
 import PrimaryInfo from './primaryInfo/PrimaryInfo'
 import Stats from './stats/Stats'
+import { AbilityScore, getData } from '../../../utils/dummyData'
 
 const FrontPage = () => {
+	const [TEMP_DATA, setTEMP_DATA] = React.useState(null)
+
 	return (
 		<BodyContainer className="w-screen gap-4 bg-base-300">
 			<MetaInfo className="h-fit " characterName="Halfdan Helligskæg" />

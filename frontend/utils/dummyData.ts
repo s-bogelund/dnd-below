@@ -1,14 +1,30 @@
-const baseString = 'https://www.dnd5eapi.co/api/ability-scores/'
-const subStrings = ['str', 'dex', 'con', 'int', 'wis', 'cha']
+const BASE_STRING = 'https://www.dnd5eapi.co/api/ability-scores/'
+const SUB_STRINGS = ['str', 'dex', 'con', 'int', 'wis', 'cha']
+
+export interface Skill {
+	name: string
+	index: string
+	url?: string
+	proficient: boolean
+	modifier: number
+}
+
+export interface AbilityScore {
+	name: string
+	fullName: string
+	desc: string[]
+	savingThrows: string[]
+	skills: Skill[]
+}
 
 const fetchApi = async (subString: string) => {
-	const response = await fetch(`${baseString + subString}`)
+	const response = await fetch(`${BASE_STRING + subString}`)
 	const data = await response.json()
 	return { data }
 }
 
 export const fetchAllData = async () => {
-	let data = await Promise.all(subStrings.map(fetchApi))
+	let data = await Promise.all(SUB_STRINGS.map(fetchApi))
 	console.log(data)
 	data.forEach(item => {
 		delete item.data?.url
@@ -27,23 +43,11 @@ export const fetchAllData = async () => {
 }
 
 export const modifyData = () => {
-	interface statItem {
-		desc: string[]
-		name: string
-		full_name: string
-		skills: {
-			name: string
-			index: string
-			url: string
-		}[]
-	}
-	interface newStatItem extends statItem {
+	interface newStatItem extends AbilityScore {
 		savingThrow: { value: number; proficient: boolean }
 	}
 
-	const data: any[] = JSON.parse(
-		window.localStorage.getItem('abilityScores') || '[]'
-	)
+	const data: any[] = JSON.parse(localStorage.getItem('abilityScores') || '[]')
 	console.log(data)
 	const skills = data.map(item => item.data?.skills)
 	skills?.forEach(item => {
@@ -52,35 +56,58 @@ export const modifyData = () => {
 
 	console.log(skills)
 
+	// Adding score and saving throw to each ability score
 	let newData: any[] = data.map(item => {
 		const newItem: newStatItem = {
 			...item.data,
+			score: Math.floor(Math.random() * 9) + 8,
 			savingThrow: {
-				value: Math.floor(Math.random() * 3),
+				name: 'Saving Throw',
+				index: 'SAV',
+				modifier: Math.floor(Math.random() * 3),
 				proficient: Math.floor(Math.random() * 3) === 1,
 			},
 		}
 		return newItem
 	})
 
+	// adding saving throw to list of skills
 	newData.forEach(item => {
-		const skills: {
-			name: string
-			index: string
-			url?: string
-			proficient: boolean
-			modifier: number
-		}[] = item.skills
+		const skills: Skill[] = item.skills
 
+		// Sort the skills by name
+		skills.sort((a, b) => {
+			return a.name > b.name ? 1 : -1
+		})
+
+		// Add the saving throw to the list of skills
+		// Should always be first, so unshift > push
+		skills.unshift({
+			name: 'Saving Throw',
+			index: 'SAV',
+			modifier: Math.floor(Math.random() * 3),
+			proficient: Math.floor(Math.random() * 3) === 1,
+		})
+
+		// changing name to camel case
+		item['fullName'] = item['full_name']
+		delete item['full_name']
+
+		// removing url and adding modifier and proficient to skills
 		skills?.forEach(skill => {
 			delete skill.url
 			skill.modifier = Math.floor(Math.random() * 4)
 			skill.proficient = Math.floor(Math.random() * 3) === 1
 		})
-
-		// console.log(skills)
 	})
-
+	// persistance handled by localStorage for now
 	console.log('Final data', newData)
-	window.localStorage.setItem('abilityScores', JSON.stringify(newData))
+	localStorage.setItem('abilityScores', JSON.stringify(newData))
+}
+
+export const getData = async (): Promise<any> => {
+	const data = await JSON.parse(localStorage.getItem('abilityScores') || '[]')
+	console.log('data:', data)
+	let resolved = await Promise.resolve(data)
+	return resolved
 }

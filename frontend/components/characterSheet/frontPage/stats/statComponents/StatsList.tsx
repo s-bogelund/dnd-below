@@ -1,4 +1,5 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
+import { Skill } from '../../../../../utils/dummyData'
 import { Card } from '../../../../UI/containers/Card'
 import StatHeader from './StatHeader'
 import StatLine from './StatLine'
@@ -6,32 +7,33 @@ import StatLine from './StatLine'
 interface StatsListProps {
 	className?: string
 	name: string
-	stats: {
-		name: string
-		modifier: number
-		proficient: boolean
-	}[]
+	skills: Skill[]
 	onProficiencyChange: (statName: string, category: string) => void
 }
 
 const StatsList: FC<StatsListProps> = props => {
-	const [stats, setStats] = React.useState(props.stats)
+	const [skills, setSkills] = React.useState(props.skills)
 	const handleModifierChange = (
 		index: number,
 		e: React.FormEvent<HTMLInputElement>
 	) => {
 		const value = parseInt(e.currentTarget.value)
-		const newStats = [...stats]
+		const newStats = [...skills]
 		newStats[index].modifier = value
-		setStats(newStats)
+		setSkills(newStats)
 	}
 
+	useEffect(() => {
+		console.log('skills', skills)
+		console.log('names', props.name)
+	}, [props.skills, props.name])
+
 	const renderStatLines = () => {
-		const statBundle = props.stats?.map(stat => {
+		const statBundle = props.skills?.map(skill => {
 			return (
 				<StatLine
-					key={stat.name}
-					stat={stat}
+					key={skill.name}
+					stat={skill}
 					onProficiencyChange={statName => {
 						console.log('statList called from', statName)
 

@@ -3,7 +3,7 @@ import Button from '../../UI/input/Button'
 import BodyContainer from '../../UI/containers/BodyContainer'
 import { Card } from '../../UI/containers/Card'
 import MetaInfo from '../frontPage/metaInfo/MetaInfo'
-import { fetchAllData, modifyData } from '../../../utils/dummyData'
+import { fetchAllData, getData, modifyData } from '../../../utils/dummyData'
 
 const SecondPage = () => {
 	const [buttonText, setButtonText] = React.useState('Next')
@@ -26,6 +26,9 @@ const SecondPage = () => {
 				</Button>
 				<Button className="btn-primary px-4 ml-5" onClick={modifyData}>
 					Modify Data
+				</Button>
+				<Button className="btn-primary px-4 ml-5" onClick={getData}>
+					Retrieve Local Data
 				</Button>
 			</div>
 		</BodyContainer>

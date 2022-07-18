@@ -1,12 +1,9 @@
 import { statSync } from 'fs'
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
+import { AbilityScore, getData } from '../../../../utils/dummyData'
 import { Card } from '../../../UI/containers/Card'
 import StatHeader from './statComponents/StatHeader'
 import StatsList from './statComponents/StatsList'
-
-interface StatsProps {
-	className?: string
-}
 
 const testStats = [
 	{ name: 'Strength', modifier: 2, proficient: true },
@@ -16,41 +13,56 @@ const testStats = [
 	{ name: 'Wisdom', modifier: 2, proficient: true },
 	{ name: 'Charisma', modifier: 2, proficient: true },
 ]
-const localStorageStats = localStorage.getItem('stats')
+
+interface StatsProps {
+	className?: string
+}
 
 const Stats: FC<StatsProps> = props => {
-	const [stats, setStats] = React.useState(testStats)
-	const [localStats, setLocalStats] = React.useState(localStorageStats)
+	const [abilityScores, setAbilityScores] = React.useState<AbilityScore[]>([])
+
+	useEffect(() => {
+		async function fetchData() {
+			const data = await getData()
+			console.log('awaited data', data)
+
+			setAbilityScores(data)
+		}
+		fetchData()
+
+		console.log(abilityScores)
+	}, [])
 
 	const handleProficiencyChanged = (statName: string, category: string) => {
 		console.log(statName, category)
-		const correctCategory = stats.find(stat => stat.name === category)
-		console.log(correctCategory)
-		if (correctCategory)
-			correctCategory.proficient = !correctCategory?.proficient
+		// const correctCategory = stats.find(stat => stat.name === category)
+		// console.log(correctCategory)
+		// if (correctCategory)
+		// 	correctCategory.proficient = !correctCategory?.proficient
 
-		// setStats([...stats])
-		console.log(correctCategory)
+		// // setStats([...stats])
+		// console.log(correctCategory)
 	}
 
-	function statTracter() {
-		
-	}
-	// const renderStatsLists = () => {
-	// 	return Object.entries(stats).map((key, value) => {
-	// 		console.log(key, value)
-	// 		return (
-	// 			<StatsList
-	// 				key={String(key).toUpperCase()}
-	// 				statName={key}
-	// 				stats={value}
-	// 				handleProficiencyChanged={handleProficiencyChanged}
-	// 			/>
-	// 		)
-	// 	})
-	// }
+	useEffect(() => {
+		console.log('abilityScores', abilityScores)
+	}, [abilityScores])
 
-	// renderStatsLists()
+	const renderStatsLists = () => {
+		console.log('abilityScores', abilityScores)
+
+		const lists = abilityScores.map(stat => {
+			return (
+				<StatsList
+					key={stat.name}
+					name={stat.fullName}
+					skills={stat.skills}
+					onProficiencyChange={handleProficiencyChanged}
+				/>
+			)
+		})
+		return lists
+	}
 
 	return (
 		<div
@@ -59,13 +71,14 @@ const Stats: FC<StatsProps> = props => {
 				props.className
 			}
 		>
-			<StatsList
+			{renderStatsLists()}
+			{/* <StatsList
 				onProficiencyChange={handleProficiencyChanged}
 				name="Strength"
 				className="justify-center"
-				stats={testStats}
-			/>
-			<StatsList
+				stats={props.abilityScores}
+			/> */}
+			{/* <StatsList
 				onProficiencyChange={handleProficiencyChanged}
 				name="Constitution"
 				className="justify-center"
@@ -94,7 +107,7 @@ const Stats: FC<StatsProps> = props => {
 				name="Charisma"
 				className="justify-center"
 				stats={testStats}
-			/>
+			/> */}
 		</div>
 	)
 }
