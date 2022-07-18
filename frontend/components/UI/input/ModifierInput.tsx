@@ -31,7 +31,14 @@ const ModifierInput: FC<Props> = props => {
 				</div>
 			)}
 
-			<div className={props.showPlus && !props.noMargin ? '-ml-2' : ''}>
+			<div
+				className={
+					'border-white border w-full h-fit ' + props.showPlus &&
+					!props.noMargin
+						? '-ml-2'
+						: ''
+				}
+			>
 				<HiddenTextField
 					onInput={props.onInput}
 					value={props.value}
@@ -39,6 +46,7 @@ const ModifierInput: FC<Props> = props => {
 					onFocus={props.onFocus}
 					className={' ' + props.className + ' ' + props.fontSize}
 				/>
+				{/* <p className="absolute h-[1px] bottom-2">___</p> */}
 			</div>
 		</div>
 	)
