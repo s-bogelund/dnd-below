@@ -20,12 +20,7 @@ export interface IAbilityScore {
 
 export function isIAbilityScore(obj: any): obj is IAbilityScore {
 	return (
-		obj.name &&
-		obj.fullName &&
-		obj.desc &&
-		obj.score &&
-		obj.savingThrows &&
-		obj.skills
+		obj.name && obj.fullName && obj.desc && obj.score && obj.savingThrows && obj.skills
 	)
 }
 
@@ -118,7 +113,7 @@ export const modifyData = () => {
 }
 
 export const getData = async (): Promise<any> => {
-	let data = await JSON.parse(localStorage.getItem('abilityScos') || '[]')
+	let data = await JSON.parse(localStorage.getItem('abilityScores') || '[]')
 	if (data.length < 1) {
 		await fetchAllData()
 		modifyData()
@@ -130,4 +125,8 @@ export const getData = async (): Promise<any> => {
 	// console.log('data:', data)
 	let resolved = await Promise.resolve(data)
 	return resolved
+}
+
+export const storeDataLocal = (data: any, storageName: string) => {
+	localStorage.setItem(storageName, JSON.stringify(data))
 }

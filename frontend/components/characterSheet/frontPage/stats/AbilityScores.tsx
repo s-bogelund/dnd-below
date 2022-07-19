@@ -1,6 +1,11 @@
 import { statSync } from 'fs'
 import React, { FC, useEffect, useState } from 'react'
-import { IAbilityScore, getData, isIAbilityScore } from '../../../../utils/dummyData'
+import {
+	IAbilityScore,
+	getData,
+	isIAbilityScore,
+	storeDataLocal,
+} from '../../../../utils/dummyData'
 import { Card } from '../../../UI/containers/Card'
 import ASHeader from './statComponents/ASHeader'
 import SkillsList from './statComponents/SkillsList'
@@ -30,6 +35,13 @@ const AbilityScores: FC<StatsProps> = props => {
 		}
 		fetchData()
 	}, [])
+
+	useEffect(() => {
+		if (abilityScores.length > 0) {
+			console.log(abilityScores)
+			storeDataLocal(abilityScores, 'abilityScores')
+		}
+	}, [abilityScores])
 
 	const handleProficiencyChanged = (abilityScoreName: string, skillName: string) => {
 		const newAbilityScore = abilityScores.map(abilityScore => {
