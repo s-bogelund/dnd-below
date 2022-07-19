@@ -21,10 +21,6 @@ const Home: NextPage = () => {
 				/>
 				<link rel="icon" href="/icon-192x192.png" />
 				<link rel="manifest" href="/manifest.json" />
-				<link
-					href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-					rel="stylesheet"
-				></link>
 			</Head>
 			<CharacterSheet />
 		</div>

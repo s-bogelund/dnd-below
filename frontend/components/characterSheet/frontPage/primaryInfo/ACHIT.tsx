@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 import HiddenTextField from '../../../UI/input/HiddenTextField'
 import { BsFillHexagonFill } from 'react-icons/bs'
-import { BsHexagon } from 'react-icons/bs'
 import { MdShield } from 'react-icons/md'
 import { IconContext } from 'react-icons'
 import { validateNumberParameters } from '../../../../utils/validation'

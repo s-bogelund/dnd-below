@@ -14,7 +14,6 @@ const HiddenTextField: FC<Props> = (props: Props) => {
 	const validateInput = (event: React.FormEvent<HTMLInputElement>) => {
 		//* if number prop not set, accept all input
 		let input = event.currentTarget.value
-		console.log(input)
 		if (!props.number || input.length < 1) {
 			props.onInput(event)
 			return
@@ -22,7 +21,6 @@ const HiddenTextField: FC<Props> = (props: Props) => {
 
 		// //* if number prop is set, accept only numbers (no special characters)
 		if (input.match(/[^0-9]/)) {
-			console.log('not number')
 			return
 		}
 

@@ -9,8 +9,11 @@ interface SkillsList {
 	onProficiencyChange: (statName: string, category: string) => void
 }
 
-const SkillsList: FC<SkillsList> = props => {
-	const [abilityScore, setAbilityScore] = React.useState(props.abilityScore)
+const SkillsList: FC<SkillsList> = ({
+	abilityScore,
+	className,
+	onProficiencyChange,
+}) => {
 	const handleModifierChange = (
 		index: number,
 		e: React.FormEvent<HTMLInputElement>
@@ -27,16 +30,14 @@ const SkillsList: FC<SkillsList> = props => {
 	}, [abilityScore.skills, abilityScore.name])
 
 	const renderStatLines = () => {
-		const statBundle = props.abilityScore.skills?.map(skill => {
+		const statBundle = abilityScore.skills?.map(skill => {
 			return (
 				<Skill
 					key={skill.name}
 					stat={skill}
-					onProficiencyChange={statName => {
-						console.log('statList called from', statName)
-
-						props.onProficiencyChange(abilityScore.name, statName)
-					}}
+					onProficiencyChange={statName =>
+						onProficiencyChange(abilityScore.name, statName)
+					}
 					onModifierChange={event => handleModifierChange(0, event)}
 				/>
 			)

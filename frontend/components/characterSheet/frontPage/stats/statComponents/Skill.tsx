@@ -1,11 +1,10 @@
-import { PropaneRounded } from '@mui/icons-material'
 import React, { FC, ReactElement, useEffect } from 'react'
 import { validateNumberParameters } from '../../../../../utils/validation'
 import { Card } from '../../../../UI/containers/Card'
 import HiddenTextField from '../../../../UI/input/HiddenTextField'
 import ModifierInput from '../../../../UI/input/ModifierInput'
 
-interface StatsLineProps {
+interface SkillLineProps {
 	className?: string
 	stat: {
 		name: string
@@ -18,7 +17,7 @@ interface StatsLineProps {
 
 const MAX_MODIFIER = 20
 
-const Skill: FC<StatsLineProps> = ({
+const Skill: FC<SkillLineProps> = ({
 	className,
 	stat,
 	onProficiencyChange,
@@ -33,11 +32,11 @@ const Skill: FC<StatsLineProps> = ({
 		onModifierChange(event)
 	}
 
-	useEffect(() => {
-		if (stat.name.toLowerCase() === 'acrobatics') {
-			console.log(stat.proficient)
-		}
-	}, [stat])
+	// useEffect(() => {
+	// 	if (stat.name.toLowerCase() === 'acrobatics') {
+	// 		console.log(stat.proficient)
+	// 	}
+	// }, [stat])
 
 	return (
 		<div className="grid grid-cols-stat-line lg:grid-cols-stat-lineLg xl:grid-cols-stat-lineXl grid-rows-1 place-items-center w-full h-fit min-h-8 px-[1px] lg:py-1 rounded-sm">
