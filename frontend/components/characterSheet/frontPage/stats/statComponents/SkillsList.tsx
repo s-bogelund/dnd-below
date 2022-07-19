@@ -7,21 +7,25 @@ interface SkillsList {
 	className?: string
 	abilityScore: IAbilityScore
 	onProficiencyChange: (statName: string, category: string) => void
+	onModifierChange?: (asName: string, skillName: string, modifier: number) => void
+	onAsChange: (asFullName: string, value: number) => void
 }
 
 const SkillsList: FC<SkillsList> = ({
 	abilityScore,
 	className,
 	onProficiencyChange,
+	onModifierChange,
+	onAsChange,
 }) => {
 	const handleModifierChange = (
-		index: number,
-		e: React.FormEvent<HTMLInputElement>
+		e: React.FormEvent<HTMLInputElement>,
+		skillName: string
 	) => {
 		const value = parseInt(e.currentTarget.value)
-		// const newStats:AbilityScore =...abilityScore
-		// newStats[index].modifier = value
-		// setAbilityScore(newStats)
+		if (isNaN(value) || !onModifierChange) return
+
+		onModifierChange(abilityScore.name, skillName, value)
 	}
 
 	useEffect(() => {
@@ -34,11 +38,11 @@ const SkillsList: FC<SkillsList> = ({
 			return (
 				<Skill
 					key={skill.name}
-					stat={skill}
+					skill={skill}
 					onProficiencyChange={statName =>
 						onProficiencyChange(abilityScore.name, statName)
 					}
-					onModifierChange={event => handleModifierChange(0, event)}
+					onModifierChange={(event, skillName) => handleModifierChange(event, skillName)}
 				/>
 			)
 		})
@@ -46,11 +50,16 @@ const SkillsList: FC<SkillsList> = ({
 	}
 	return (
 		<>
-			<div className="flex flex-col items-center rounded-md shadow-sm shadow-gray-800 justify-start bg-neutral w-full h-fit pb-3 pt-3 p-[1px] lg:gap-2">
+			<div className="flex flex-col items-center rounded-md shadow-sm shadow-gray-800 justify-start bg-neutral w-full h-fit py-3 p-[1px] lg:gap-2">
 				<ASHeader
 					statName={abilityScore?.fullName}
 					score={abilityScore?.score}
 					className="mb-1"
+					onAsChange={(event, statName) => {
+						console.log('skillList received onAsChange', event, statName)
+
+						onAsChange(event, statName)
+					}}
 				/>
 				{renderStatLines()}
 			</div>

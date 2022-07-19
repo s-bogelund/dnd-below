@@ -1,15 +1,33 @@
-import React, { FC } from 'react'
+import React, { FC, FormEvent } from 'react'
+import { validateNumberParameters } from '../../../../../utils/validation'
 import { Card } from '../../../../UI/containers/Card'
 import HiddenTextField from '../../../../UI/input/HiddenTextField'
 
 interface StatHeaderProps {
 	className?: string
-	statName?: string
+	statName: string
 	description?: string[]
 	score?: number
+	onAsChange: (asName: string, value: number) => void
 }
 
+const MAX_ABILITYSCORE = 49
+
 const ASHeader: FC<StatHeaderProps> = props => {
+	const handleAsChange = (event: React.FormEvent<HTMLInputElement>) => {
+		// if empty string, the value should be 0
+		if (!event.currentTarget.value.length) {
+			props.onAsChange(props.statName, 0)
+			return
+		}
+		const newScore = parseInt(event.currentTarget.value)
+		if (!validateNumberParameters(newScore, 0, MAX_ABILITYSCORE) || !props.onAsChange)
+			return
+
+		console.log()
+		props.onAsChange(props.statName, newScore)
+	}
+
 	return (
 		<Card
 			className={
@@ -22,7 +40,7 @@ const ASHeader: FC<StatHeaderProps> = props => {
 			</span>
 
 			<HiddenTextField
-				onInput={event => console.log(event)}
+				onInput={event => handleAsChange(event)}
 				value={props.score}
 				number={true}
 				onFocus={event => event.currentTarget.select()}

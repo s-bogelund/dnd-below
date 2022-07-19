@@ -21,6 +21,7 @@ module.exports = {
 				8: 'repeat(8, minmax(0, 1fr))',
 				9: 'repeat(9, minmax(0, 1fr))',
 				10: 'repeat(10, minmax(0, 1fr))',
+				'ability-score': '.672fr 1fr',
 			},
 			gridTemplateColumns: {
 				'stat-line': 'minmax(20px, 25px) minmax(20px, 28px) 1fr',
