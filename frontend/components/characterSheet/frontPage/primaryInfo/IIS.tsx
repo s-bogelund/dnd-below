@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { validateNumberParameters } from '../../../../utils/validation'
 import { Card } from '../../../UI/containers/Card'
 import HiddenTextField from '../../../UI/input/HiddenTextField'
-import ModifierInput from '../../../UI/input/ModifierInput'
+import ModifierInputLg from '../../../UI/input/ModifierInputLg'
 
 interface IISProps {
 	inspiration: number
@@ -20,9 +20,7 @@ const IIS: FC<IISProps> = props => {
 	const [speed, setSpeed] = React.useState(props.speed)
 	const [initiative, setInitiative] = React.useState(props.initiative)
 
-	const handleInspiration = (
-		event: React.FormEvent<HTMLInputElement>
-	): void => {
+	const handleInspiration = (event: React.FormEvent<HTMLInputElement>): void => {
 		const value = event.currentTarget.value
 		if (value.length < 1) {
 			setInspiration(0)
@@ -78,12 +76,12 @@ const IIS: FC<IISProps> = props => {
 			<div className="flex flex-row h-[50%] w-full gap-2">
 				<Card className="bg-base-300 w-[50%] h-full rounded-sm">
 					<span className="text-xl tracking-tight">Initiative</span>
-					<ModifierInput
+					<ModifierInputLg
 						onInput={event => handleInitiative(event)}
 						value={initiative}
 						onFocus={event => event.currentTarget.select()}
 						showPlus={initiative > 0}
-						className="w-12  font-semibold text-center"
+						className="w-9 lg:w-12 font-semibold text-center"
 						fontSize="text-2xl lg:text-3xl"
 					/>
 				</Card>

@@ -18,14 +18,10 @@ const SkillsList: FC<SkillsList> = ({
 	onModifierChange,
 	onAsChange,
 }) => {
-	const handleModifierChange = (
-		e: React.FormEvent<HTMLInputElement>,
-		skillName: string
-	) => {
-		const value = parseInt(e.currentTarget.value)
-		if (isNaN(value) || !onModifierChange) return
+	const handleModifierChange = (newValue: number, skillName: string) => {
+		if (isNaN(newValue) || !onModifierChange) return
 
-		onModifierChange(abilityScore.name, skillName, value)
+		onModifierChange(abilityScore.name, skillName, newValue)
 	}
 
 	useEffect(() => {
@@ -42,7 +38,9 @@ const SkillsList: FC<SkillsList> = ({
 					onProficiencyChange={statName =>
 						onProficiencyChange(abilityScore.name, statName)
 					}
-					onModifierChange={(event, skillName) => handleModifierChange(event, skillName)}
+					onModifierChange={(newValue, skillName) =>
+						handleModifierChange(newValue, skillName)
+					}
 				/>
 			)
 		})

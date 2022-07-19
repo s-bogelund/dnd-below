@@ -10,33 +10,28 @@ interface Props {
 	onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void
 	onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void
 	showPlus?: boolean
-	noMargin?: boolean
 	labelProps?: string
 	fontSize: string
 }
 
-const ModifierInput: FC<Props> = props => {
+const ModifierInputLg: FC<Props> = props => {
 	return (
 		<div
 			className={
-				'flex flex-row w-full h-fit justify-center content-center  ' +
-				(props.showPlus && props.noMargin ? ' -ml-2 ' : '')
+				'flex flex-row w-fit max-w-[30px] h-fit justify-center content-center ' +
+				(props.showPlus ? ' -ml-2' : '')
 			}
 		>
 			{props.showPlus && (
-				<div className="w-4">
-					<label className={' ' + props.labelProps + ' ' + props.fontSize}>
-						+
-					</label>
+				<div className="w-2 lg:w-3 h-fit">
+					<label className={' ' + props.labelProps + ' ' + props.fontSize}>+</label>
 				</div>
 			)}
 
-			<div
+			<span
 				className={
-					'border-white border w-full h-fit ' + props.showPlus &&
-					!props.noMargin
-						? '-ml-2'
-						: ''
+					'border-white border w-fit lg:max-w-{18px} max-w-{15px} h-fit ' +
+						props.showPlus && ' lg:-ml-[0.3rem] -ml-[0.2rem] -mt-[1px]'
 				}
 			>
 				<HiddenTextField
@@ -44,12 +39,11 @@ const ModifierInput: FC<Props> = props => {
 					value={props.value}
 					number={true}
 					onFocus={props.onFocus}
-					className={' ' + props.className + ' ' + props.fontSize}
+					className={'min-w-[19px] ' + props.className + ' ' + props.fontSize}
 				/>
-				{/* <p className="absolute h-[1px] bottom-2">___</p> */}
-			</div>
+			</span>
 		</div>
 	)
 }
 
-export default ModifierInput
+export default ModifierInputLg

@@ -2,6 +2,6 @@
 	"extends": "next/core-web-vitals",
 
 	"rules": {
-		"object-curly-spacing": 1
+		"object-curly-spacing": 0
 	}
 }
