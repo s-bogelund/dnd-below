@@ -24,6 +24,7 @@ module.exports = {
 				'ability-score': '.672fr 1fr',
 			},
 			gridTemplateColumns: {
+				weaponAbilities: '.63fr 1fr',
 				'stat-line': 'minmax(20px, 25px) minmax(20px, 28px) 1fr',
 				'stat-lineLg': 'minmax(20px, 30px) minmax(20px, 40px) 1fr',
 				'stat-lineXl': 'minmax(20px, 35px) minmax(20px, 45px) 1fr',

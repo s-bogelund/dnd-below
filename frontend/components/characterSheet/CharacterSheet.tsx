@@ -17,7 +17,6 @@ const CharacterSheet = () => {
 			className="swipe-fix "
 		>
 			<SwiperSlide className="swipe-fix flex flex-row justify-center ">
-				{/* <FrontPage /> */}
 				<FrontPage />
 			</SwiperSlide>
 			<SwiperSlide className="swipe-fix flex flex-row justify-center content-center items-center">
