@@ -66,35 +66,10 @@ const Skill: FC<SkillLineProps> = ({
 				/>
 				{/* <p className="absolute bott mt-1 h-1">___</p> */}
 			</div>
-			<div className="flex mt-[5px] lg:mt-[7px] -ml-2 text-sm lg:text-[1rem] place-self-leftlg:text-base tracking-tighter lg:tracking-normal font-semibold text-left whitespace-nowrap ">
+			<div className="flex mt-[5px] lg:mt-[7px] -ml-[6px] text-sm lg:text-[1rem] place-self-leftlg:text-base tracking-tighter lg:tracking-normal font-semibold text-left whitespace-nowrap ">
 				<p>{skill.name}</p>
 			</div>
 		</div>
-		// <div className="grid grid-cols-stat-line lg:grid-cols-stat-lineLg xl:grid-cols-stat-lineXl grid-rows-1 place-items-left items-center w-full h-fit min-h-8 px-[1px] lg:py-1 rounded-sm">
-		// 	<div className="w-8">
-		// 		<input
-		// 			type="checkbox"
-		// 			className=" radio radio-xs lg:radio-sm radio-primary text-black mt-1"
-		// 			checked={skill.proficient}
-		// 			onChange={() => onProficiencyChange(skill.name)}
-		// 		/>
-		// 	</div>
-		// 	<div className="grid place-items-start -ml-2 lg:-ml-6  lg:pl-2">
-		// 		<ModifierInputSm
-		// 			fontSize={' text-sm lg:text-md '}
-		// 			showPlus={skill.modifier > 0}
-		// 			onInput={e => handleModifierChange(e)}
-		// 			className="w-[70%] h-fit lg:text-base relative text-center place-self-center"
-		// 			labelProps="ml-2 lg:ml-3 place-self-center"
-		// 			value={skill.modifier}
-		// 			onFocus={e => e.currentTarget.select()}
-		// 		/>
-		// 		{/* <p className="absolute bott mt-1 h-1">___</p> */}
-		// 	</div>
-		// 	<div className="flex mt-[2px] -ml-2 text-sm lg:text-[1rem] place-self-leftlg:text-base tracking-tighter lg:tracking-normal font-semibold text-left whitespace-nowrap ">
-		// 		<p>{skill.name}</p>
-		// 	</div>
-		// </div>
 	)
 }
 

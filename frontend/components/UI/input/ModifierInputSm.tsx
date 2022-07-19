@@ -42,7 +42,7 @@ const ModifierInputSm: FC<Props> = props => {
 			)}
 
 			{!props.showPlus && (
-				<span className={' w-fit h-fit -ml-[2px] lg:ml-[5px] mt-[2px]'}>
+				<span className={' w-fit h-fit  lg:ml-[4px] mt-[2px]'}>
 					<HiddenTextField
 						onInput={props.onInput}
 						value={props.value}
@@ -50,7 +50,7 @@ const ModifierInputSm: FC<Props> = props => {
 						onFocus={props.onFocus}
 						className={'min-w-[19px] ' + props.className + ' ' + props.fontSize}
 					/>
-					<span className="absolute h-[1px] bg-neutral-content w-4 lg:w-5 left-[1px] lg:left-[0.3rem] bottom-[2px]  "></span>
+					<span className="absolute h-[1px] bg-neutral-content w-4 lg:w-5 left-[2px] lg:left-[0.3rem] bottom-[2px]  "></span>
 				</span>
 			)}
 		</div>
