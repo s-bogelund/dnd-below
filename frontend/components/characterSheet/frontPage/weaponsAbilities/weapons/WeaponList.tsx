@@ -33,7 +33,7 @@ const WeaponList: FC<IWeaponProps> = props => {
 								'text-neutral-content opacity-20 mt-1 h-full m-0 text-2xl lg:text-4xl',
 						}}
 					>
-						<button className="btn btn-block btn-hidden btn-sm lg:btn-md h-full m-0">
+						<button className=" btn-block btn-hidden btn-sm lg:btn-md h-full m-0">
 							<MdAddBox className="text-2xl lg:text-4xl" />
 						</button>
 					</IconContext.Provider>

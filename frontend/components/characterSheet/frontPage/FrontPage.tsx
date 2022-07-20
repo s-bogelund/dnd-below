@@ -15,7 +15,7 @@ const FrontPage = () => {
 	const [TEMP_DATA, setTEMP_DATA] = React.useState(null)
 
 	return (
-		<BodyContainer className="w-screen gap-4 bg-base-300 max-h-[101vh]">
+		<BodyContainer className="w-screen gap-4 bg-base-300 justify-start content-start">
 			<MetaInfo className="h-fit " characterName="Halfdan Helligskæg" />
 			<PrimaryInfo className="w-full shrink " />
 			<div className="bg-transparent grid grid-flow-col grid-rows-5 gap-4 grid-cols-weaponAbilities min-h[20%] h-[60%] max-h-[75%]  rounded-md ">
