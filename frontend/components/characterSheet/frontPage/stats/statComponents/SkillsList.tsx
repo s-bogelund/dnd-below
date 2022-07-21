@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from 'react'
 import { IAbilityScore, ISkill } from '../../../../../utils/interfaces'
+import { Card } from '../../../../UI/containers/Card'
 import ASHeader from './ASHeader'
 import Skill from './Skill'
 
@@ -48,7 +49,7 @@ const SkillsList: FC<SkillsList> = ({
 	}
 	return (
 		<>
-			<div className="flex flex-col items-center rounded-md shadow-sm shadow-gray-800 justify-start bg-neutral w-full h-fit p-[2px] lg:gap-2 ">
+			<Card className="flex flex-col items-center rounded-md !justify-start bg-neutral w-full h-fit p-[2px] lg:gap-2 ">
 				<ASHeader
 					statName={abilityScore?.fullName}
 					score={abilityScore?.score}
@@ -60,7 +61,7 @@ const SkillsList: FC<SkillsList> = ({
 					}}
 				/>
 				{renderStatLines()}
-			</div>
+			</Card>
 		</>
 	)
 }

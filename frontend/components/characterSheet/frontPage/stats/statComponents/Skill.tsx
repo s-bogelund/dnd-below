@@ -59,7 +59,7 @@ const Skill: FC<SkillLineProps> = ({
 			<div className="grid w-[20%] lg:mt-[2px]">
 				<ModifierInputSm
 					fontSize={' text-sm lg:text-md '}
-					showPlus={skill.modifier > 3}
+					showPlus={skill.modifier > 0}
 					onInput={e => handleModifierChange(e)}
 					className="w-[70%] h-fit lg:text-base relative text-center place-self-center"
 					labelProps="place-self-center"

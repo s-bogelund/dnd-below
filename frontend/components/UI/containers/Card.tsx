@@ -10,7 +10,7 @@ export const Card = (props: CardProps) => {
 	return (
 		<div
 			className={
-				'card shadow-sm shadow-gray-800 justify-center items-center bg-base-300 bg-opacity-80 rounded-md ' +
+				'card shadow-sm shadow-gray-700 justify-center items-center bg-base-300 bg-opacity-80 rounded-md ' +
 				props.className
 			}
 		>

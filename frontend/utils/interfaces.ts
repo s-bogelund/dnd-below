@@ -15,11 +15,11 @@ export interface IAbility {
 	rest: Rest
 }
 
-enum Rest {
-	shortRest = 'shortRest',
-	longRest = 'longRest',
-	none = 'none',
-	overnight = 'overnight',
+export enum Rest {
+	ShortRest = 'Short Rest',
+	LongRest = 'Long Rest',
+	None = 'None',
+	Overnight = 'Overnight',
 }
 export interface IAbilityScore {
 	name: string

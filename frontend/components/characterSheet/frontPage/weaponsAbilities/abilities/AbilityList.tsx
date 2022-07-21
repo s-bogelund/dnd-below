@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { IconContext } from 'react-icons'
 import { MdAddBox } from 'react-icons/md'
 import { IAbility } from '../../../../../utils/interfaces'
@@ -11,17 +11,39 @@ interface AbilityListProps {
 	abilities?: IAbility[]
 }
 
-const AbilityList: FC<AbilityListProps> = props => {
+const AbilityList: FC<AbilityListProps> = ({ className, abilities }) => {
+	const [itemGap, setItemGap] = useState('gap-[6px]')
+
+	const renderAbilities = () => {
+		if (abilities === undefined) {
+			return null
+		}
+		return abilities.map((ability, index) => {
+			return <AbilityItem key={index} ability={ability} />
+		})
+	}
+
 	return (
-		<ListWA header="Abilities" className={'row-span-2 gap-1 h-fit ' + props.className}>
+		<ListWA
+			header="Abilities"
+			className={'row-span-2 h-fit ' + className + ' ' + itemGap}
+		>
 			<div className="flex flex-row justify-start items-start content-start w-full gap-[2px] -mb-2">
-				<span className="w-[43%] h-6 tracking-tighter text-sm text-center">Name</span>
-				<span className="w-[13%] h-6 tracking-tighter text-sm px-1 text-center">Lvl</span>
-				<span className="w-[44%] h-6 tracking-tighter text-sm text-center">Rest</span>
+				<span className="w-[60%] h-6 tracking-tighter text-sm text-center">Name</span>
+				<span className="w-[10%] h-6 tracking-tighter text-sm px-1 text-center">Lvl</span>
+				<span className="w-[30%] h-6 tracking-tighter text-sm text-center">Rest</span>
 			</div>
+			{renderAbilities()}
+			{/* <AbilityItem />
 			<AbilityItem />
 			<AbilityItem />
 			<AbilityItem />
+			<AbilityItem />
+			<AbilityItem />
+			<AbilityItem />
+			<AbilityItem />
+			<AbilityItem />
+			<AbilityItem /> */}
 			<div className="flex justify-center content-center">
 				<IconContext.Provider
 					value={{

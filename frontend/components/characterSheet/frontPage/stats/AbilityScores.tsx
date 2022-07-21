@@ -6,15 +6,6 @@ import { Card } from '../../../UI/containers/Card'
 import ASHeader from './statComponents/ASHeader'
 import SkillsList from './statComponents/SkillsList'
 
-const testStats = [
-	{ name: 'Strength', modifier: 2, proficient: true },
-	{ name: 'Dexterity', modifier: 2, proficient: true },
-	{ name: 'Constitution', modifier: 2, proficient: false },
-	{ name: 'Intelligence', modifier: 2, proficient: false },
-	{ name: 'Wisdom', modifier: 2, proficient: true },
-	{ name: 'Charisma', modifier: 2, proficient: true },
-]
-
 interface StatsProps {
 	className?: string
 }
@@ -104,7 +95,7 @@ const AbilityScores: FC<StatsProps> = props => {
 			{abilityScores && (
 				<div
 					className={
-						'grid grid-rows-ability-score grid-cols-3 gap-2 justify-center content-center ' +
+						'grid grid-rows-ability-score lg:grid-rows-2 grid-cols-3 gap-x-2 gap-y-4 justify-center content-center ' +
 						props.className
 					}
 				>

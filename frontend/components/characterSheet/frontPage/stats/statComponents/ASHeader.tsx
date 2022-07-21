@@ -31,7 +31,7 @@ const ASHeader: FC<StatHeaderProps> = props => {
 	return (
 		<Card
 			className={
-				'bg-base-300 w-full h-[30%] rounded-md bg-opacity-80 shadow-lg px-2 py-1 ' +
+				'bg-base-300 w-full h-[30%] rounded-md bg-opacity-80 shadow-none px-2 py-1 ' +
 				props.className
 			}
 		>

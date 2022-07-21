@@ -6,7 +6,7 @@ module.exports = {
 	},
 	content: [
 		'./pages/**/*.{html,js,ts,jsx,tsx}',
-		'./components/**/**/**/*.{html,js,ts,jsx,tsx}',
+		'./components/**/**/**/**/**/*.{html,js,ts,jsx,tsx}',
 	],
 	theme: {
 		screens: {
@@ -21,7 +21,7 @@ module.exports = {
 				8: 'repeat(8, minmax(0, 1fr))',
 				9: 'repeat(9, minmax(0, 1fr))',
 				10: 'repeat(10, minmax(0, 1fr))',
-				'ability-score': '.672fr 1fr',
+				'ability-score': '.90fr 1fr ',
 			},
 			gridTemplateColumns: {
 				weaponAbilities: '.63fr 1fr',

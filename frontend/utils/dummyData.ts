@@ -1,7 +1,7 @@
 const BASE_STRING = 'https://www.dnd5eapi.co/api/ability-scores/'
 const SUB_STRINGS = ['con', 'str', 'dex', 'int', 'wis', 'cha'] // normal order
-// const SUB_STRINGS_R = SUB_STRINGS.reverse() // reverse order
-const SUB_STRINGS_TO_USE = SUB_STRINGS
+const SUB_STRINGS_2 = ['wis', 'int', 'cha', 'con', 'str', 'dex']
+const SUB_STRINGS_TO_USE = SUB_STRINGS_2
 import { IAbilityScore, ISkill } from './interfaces'
 
 export function isIAbilityScore(obj: any): obj is IAbilityScore {

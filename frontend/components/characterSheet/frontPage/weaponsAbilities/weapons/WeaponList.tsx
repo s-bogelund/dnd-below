@@ -13,10 +13,13 @@ interface IWeaponProps {
 const WeaponList: FC<IWeaponProps> = props => {
 	const { weapons } = props
 	const [canAddWeapon, setCanAddWeapon] = useState(
-		weapons !== undefined ? weapons?.length < 3 : true
+		weapons !== undefined ? weapons?.length < 3 : false
 	)
 	return (
-		<ListWA header="Weapons" className={'row-span-2 gap-1 h-fit ' + props.className}>
+		<ListWA
+			header="Weapons"
+			className={'row-span-2 gap-[6px] lg:gap-2 h-fit ' + props.className}
+		>
 			<div className="flex flex-row justify-start items-start content-start w-full gap-[2px] -mb-2">
 				<span className="w-[43%] h-6 tracking-tighter text-sm text-center">Name</span>
 				<span className="w-[13%] h-6 tracking-tighter text-sm px-1">Atk+</span>
