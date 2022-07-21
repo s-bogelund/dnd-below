@@ -5,7 +5,7 @@ import PrimaryInfo from './primaryInfo/PrimaryInfo'
 import AbilityScores from './stats/AbilityScores'
 import WeaponList from './weaponsAbilities/weapons/WeaponList'
 import AbilityList from './weaponsAbilities/abilities/AbilityList'
-import { IAbility, Rest } from '../../../utils/interfaces'
+import { IAbility, Rest, IWeapon } from '../../../utils/interfaces'
 
 const TEMP_SPELLS_1: IAbility[] = [
 	{
@@ -15,7 +15,7 @@ const TEMP_SPELLS_1: IAbility[] = [
 		level: 1,
 		index: 'fireball',
 		spellsSlots: 1,
-		rest: Rest.Overnight,
+		rest: Rest.ShortRest,
 	},
 	{
 		name: 'Lightning Bolt',
@@ -24,7 +24,7 @@ const TEMP_SPELLS_1: IAbility[] = [
 		level: 1,
 		index: 'lightning-bolt',
 		spellsSlots: 1,
-		rest: Rest.None,
+		rest: Rest.LongRest,
 	},
 	{
 		name: 'Acid Splash',
@@ -34,6 +34,54 @@ const TEMP_SPELLS_1: IAbility[] = [
 		index: 'acid-splash',
 		spellsSlots: 1,
 		rest: Rest.None,
+	},
+	{
+		name: 'Lay On Hands',
+		description: 'A spell that heals the target',
+		url: 'https://www.dndbeyond.com/spells/lay-on-hands',
+		level: 3,
+		index: 'lay-on-hands',
+		spellsSlots: 0,
+		rest: Rest.Overnight,
+	},
+]
+
+const TEMP_WEAPONS_1: IWeapon[] = [
+	{
+		name: 'Longsword',
+		description: 'A longsword that hits the target',
+		url: 'https://www.dndbeyond.com/equipment/weapons/longsword',
+		attBonus: 5,
+		damage: '1d10 +3',
+		damageType: 'slashing',
+		range: '5',
+		weight: 2,
+		properties: ['Versatile (1d10)'],
+		index: 'longsword',
+	},
+	{
+		name: 'Shortsword',
+		description: 'A shortsword that hits the target',
+		url: 'https://www.dndbeyond.com/equipment/weapons/shortsword',
+		attBonus: 5,
+		damage: '1d6 +3',
+		damageType: 'piercing',
+		range: '5',
+		weight: 2,
+		properties: ['Versatile (1d8)'],
+		index: 'shortsword',
+	},
+	{
+		name: 'Dagger',
+		description: 'A dagger that hits the target',
+		url: 'https://www.dndbeyond.com/equipment/weapons/dagger',
+		attBonus: 5,
+		damage: '1d4 +3',
+		damageType: 'piercing',
+		range: '5',
+		weight: 1,
+		properties: ['Finesse'],
+		index: 'dagger',
 	},
 ]
 
@@ -46,7 +94,7 @@ const FrontPage = () => {
 			<PrimaryInfo className="w-full shrink " />
 			<div className="bg-transparent grid grid-flow-col grid-rows-1 gap-4 grid-cols-weaponAbilities min-h[20%] h-[60%] max-h-[75%] rounded-md ">
 				<div className="flex flex-col row-span-full gap-4">
-					<WeaponList />
+					<WeaponList weapons={TEMP_WEAPONS_1} />
 					<AbilityList abilities={TEMP_SPELLS}></AbilityList>
 				</div>
 				<AbilityScores className="w-full bg-transparent h-full col-span-2 row-span-full" />

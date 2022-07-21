@@ -7,14 +7,22 @@ import { IconContext } from 'react-icons'
 
 interface IWeaponProps {
 	className?: string
-	weapons?: IWeapon[]
+	weapons: IWeapon[]
 }
 
 const WeaponList: FC<IWeaponProps> = props => {
 	const { weapons } = props
-	const [canAddWeapon, setCanAddWeapon] = useState(
-		weapons !== undefined ? weapons?.length < 3 : false
-	)
+
+	const renderWeapons = () => {
+		if (weapons.length < 1) {
+			return null
+		}
+
+		return weapons.map((weapon, index) => {
+			return <WeaponItem key={index} weapon={weapon} />
+		})
+	}
+
 	return (
 		<ListWA
 			header="Weapons"
@@ -25,10 +33,11 @@ const WeaponList: FC<IWeaponProps> = props => {
 				<span className="w-[13%] h-6 tracking-tighter text-sm px-1">Atk+</span>
 				<span className="w-[44%] h-6 tracking-tighter text-sm text-center">Damage</span>
 			</div>
+			{/* <WeaponItem />
 			<WeaponItem />
-			<WeaponItem />
-			<WeaponItem />
-			{canAddWeapon && (
+			<WeaponItem /> */}
+			{renderWeapons()}
+			{weapons.length < 3 && (
 				<div className="flex justify-center content-center">
 					<IconContext.Provider
 						value={{

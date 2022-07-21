@@ -1,8 +1,14 @@
 export interface IWeapon {
 	name: string
+	url: string
+	description: string
 	attBonus: number
 	damage: string
-	type: string
+	damageType: string
+	weight: number
+	index: string
+	range: string
+	properties: string[]
 }
 
 export interface IAbility {

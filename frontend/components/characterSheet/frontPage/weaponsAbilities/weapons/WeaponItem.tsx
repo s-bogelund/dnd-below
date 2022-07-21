@@ -8,11 +8,11 @@ interface IWeaponItemProps {
 }
 
 const WeaponItem: FC<IWeaponItemProps> = props => {
-	const { name, attBonus, damage, type } = props.weapon || {
+	const { name, attBonus, damage, damageType } = props.weapon || {
 		name: 'Test ',
 		attBonus: 5,
 		damage: '1d10 +3',
-		type: 'testing',
+		damageType: 'testing',
 	}
 
 	return (
@@ -35,7 +35,7 @@ const WeaponItem: FC<IWeaponItemProps> = props => {
 				<HiddenTextField
 					onInput={() => console.log('Chaning weapon name is not implemented yet')}
 					className="w-full px-1 tracking-tighter lg:text-base font-semibold lg:tracking-normal text-center "
-					value={`${damage} ${type}`}
+					value={`${damage} ${damageType}`}
 				/>
 			</Card>
 		</div>
