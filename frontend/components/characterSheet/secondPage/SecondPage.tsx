@@ -5,6 +5,7 @@ import { Card } from '../../UI/containers/Card'
 import MetaInfo from '../frontPage/metaInfo/MetaInfo'
 import { fetchAllStats, getStats, modifyStats } from '../../../utils/dummyData'
 import { useQuery } from '@tanstack/react-query'
+import { fetchSpellInfo } from '../../../utils/fetching'
 
 const SecondPage = () => {
 	// const { isLoading, data } = useQuery(['characterSheet'], getStats)
@@ -21,6 +22,12 @@ const SecondPage = () => {
 				</Button>
 				<Button className="btn-primary px-4 ml-5" onClick={getStats}>
 					Retrieve Local Data
+				</Button>
+				<Button
+					className="btn-success px-4 ml-5"
+					onClick={() => fetchSpellInfo('fireball')}
+				>
+					Retrieve Fireball data
 				</Button>
 			</div>
 		</BodyContainer>

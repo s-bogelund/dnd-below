@@ -8,10 +8,15 @@ import AbilityItem from './AbilityItem'
 
 interface AbilityListProps {
 	className?: string
+	addAbilityClicked: () => void
 	abilities?: IAbility[]
 }
 
-const AbilityList: FC<AbilityListProps> = ({ className, abilities }) => {
+const AbilityList: FC<AbilityListProps> = ({
+	className,
+	abilities,
+	addAbilityClicked,
+}) => {
 	const [itemGap, setItemGap] = useState('gap-[6px]')
 
 	const renderAbilities = () => {
@@ -34,16 +39,6 @@ const AbilityList: FC<AbilityListProps> = ({ className, abilities }) => {
 				<span className="w-[30%] h-6 tracking-tighter text-sm text-center">Rest</span>
 			</div>
 			{renderAbilities()}
-			{/* <AbilityItem />
-			<AbilityItem />
-			<AbilityItem />
-			<AbilityItem />
-			<AbilityItem />
-			<AbilityItem />
-			<AbilityItem />
-			<AbilityItem />
-			<AbilityItem />
-			<AbilityItem /> */}
 			<div className="flex justify-center content-center">
 				<IconContext.Provider
 					value={{
@@ -51,7 +46,10 @@ const AbilityList: FC<AbilityListProps> = ({ className, abilities }) => {
 							'text-neutral-content opacity-20 mt-1 h-full m-0 text-2xl lg:text-4xl',
 					}}
 				>
-					<button className="btn btn-block btn-hidden btn-sm lg:btn-md h-full m-0">
+					<button
+						className="btn btn-block modal-button btn-hidden btn-sm lg:btn-md h-full m-0"
+						onClick={addAbilityClicked}
+					>
 						<MdAddBox className="text-2xl lg:text-4xl" />
 					</button>
 				</IconContext.Provider>

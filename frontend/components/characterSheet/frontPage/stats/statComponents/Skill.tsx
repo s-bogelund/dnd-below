@@ -16,6 +16,8 @@ interface SkillLineProps {
 	onModifierChange: (newValue: number, skillName: string) => void
 }
 
+const TEMP_PROFICIENCY_SCORE = 2
+
 const MAX_MODIFIER = 20
 
 const Skill: FC<SkillLineProps> = ({
@@ -28,7 +30,6 @@ const Skill: FC<SkillLineProps> = ({
 		if (event.currentTarget.value.length < 1) {
 			onModifierChange(0, skill.name)
 			console.log('handleModifierChange: 0')
-
 			return
 		}
 		const value = Number(event.currentTarget.value)
@@ -59,11 +60,11 @@ const Skill: FC<SkillLineProps> = ({
 			<div className="grid w-[20%] lg:mt-[2px]">
 				<ModifierInputSm
 					fontSize={' text-sm lg:text-md '}
-					showPlus={skill.modifier > 0}
+					showPlus={skill.modifier > 0 || skill.proficient}
 					onInput={e => handleModifierChange(e)}
 					className="w-[70%] h-fit lg:text-base relative text-center place-self-center"
 					labelProps="place-self-center"
-					value={skill.modifier}
+					value={skill.modifier + (skill.proficient ? TEMP_PROFICIENCY_SCORE : 0)}
 					onFocus={e => e.currentTarget.select()}
 				/>
 				{/* <p className="absolute bott mt-1 h-1">___</p> */}

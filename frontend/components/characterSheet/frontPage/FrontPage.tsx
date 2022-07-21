@@ -15,7 +15,7 @@ const TEMP_SPELLS_1: IAbility[] = [
 		level: 1,
 		index: 'fireball',
 		spellsSlots: 1,
-		rest: Rest.ShortRest,
+		rest: Rest.Short,
 	},
 	{
 		name: 'Lightning Bolt',
@@ -24,7 +24,7 @@ const TEMP_SPELLS_1: IAbility[] = [
 		level: 1,
 		index: 'lightning-bolt',
 		spellsSlots: 1,
-		rest: Rest.LongRest,
+		rest: Rest.Long,
 	},
 	{
 		name: 'Acid Splash',
@@ -88,6 +88,10 @@ const TEMP_WEAPONS_1: IWeapon[] = [
 const FrontPage = () => {
 	const [TEMP_SPELLS, setTEMP_SPELLS] = useState(TEMP_SPELLS_1)
 
+	const handleAddAbility = () => {
+		console.log('You just tried to add an ability!')
+	}
+
 	return (
 		<BodyContainer className="w-screen gap-6 bg-base-300 !justify-start ">
 			<MetaInfo className="h-fit " characterName="Halfdan Helligskæg" />
@@ -95,7 +99,10 @@ const FrontPage = () => {
 			<div className="bg-transparent grid grid-flow-col grid-rows-1 gap-4 grid-cols-weaponAbilities min-h[20%] h-[60%] max-h-[75%] rounded-md ">
 				<div className="flex flex-col row-span-full gap-4">
 					<WeaponList weapons={TEMP_WEAPONS_1} />
-					<AbilityList abilities={TEMP_SPELLS}></AbilityList>
+					<AbilityList
+						addAbilityClicked={handleAddAbility}
+						abilities={TEMP_SPELLS}
+					></AbilityList>
 				</div>
 				<AbilityScores className="w-full bg-transparent h-full col-span-2 row-span-full" />
 			</div>

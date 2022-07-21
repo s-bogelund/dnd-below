@@ -95,7 +95,7 @@ const AbilityScores: FC<StatsProps> = props => {
 			{abilityScores && (
 				<div
 					className={
-						'grid grid-rows-ability-score lg:grid-rows-2 grid-cols-3 gap-x-2 gap-y-4 justify-center content-center ' +
+						'grid grid-rows-ability-score lg:grid-rows-2 grid-cols-3 gap-x-[10px] lg:gap-x-4 gap-y-4 justify-center content-center ' +
 						props.className
 					}
 				>

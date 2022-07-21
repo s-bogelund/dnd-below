@@ -22,8 +22,8 @@ export interface IAbility {
 }
 
 export enum Rest {
-	ShortRest = 'Short Rest',
-	LongRest = 'Long Rest',
+	Short = 'Short Rest',
+	Long = 'Long Rest',
 	None = 'None',
 	Overnight = 'Overnight',
 }
