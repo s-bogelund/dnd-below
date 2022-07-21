@@ -27,6 +27,8 @@ const Skill: FC<SkillLineProps> = ({
 	const handleModifierChange = (event: React.FormEvent<HTMLInputElement>) => {
 		if (event.currentTarget.value.length < 1) {
 			onModifierChange(0, skill.name)
+			console.log('handleModifierChange: 0')
+
 			return
 		}
 		const value = Number(event.currentTarget.value)
@@ -57,7 +59,7 @@ const Skill: FC<SkillLineProps> = ({
 			<div className="grid w-[20%] lg:mt-[2px]">
 				<ModifierInputSm
 					fontSize={' text-sm lg:text-md '}
-					showPlus={skill.modifier > 0}
+					showPlus={skill.modifier > 3}
 					onInput={e => handleModifierChange(e)}
 					className="w-[70%] h-fit lg:text-base relative text-center place-self-center"
 					labelProps="place-self-center"

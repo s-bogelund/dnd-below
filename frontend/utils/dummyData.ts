@@ -1,22 +1,6 @@
 const BASE_STRING = 'https://www.dnd5eapi.co/api/ability-scores/'
 const SUB_STRINGS = ['con', 'str', 'dex', 'int', 'wis', 'cha']
-
-export interface ISkill {
-	name: string
-	index: string
-	url?: string
-	proficient: boolean
-	modifier: number
-}
-
-export interface IAbilityScore {
-	name: string
-	fullName: string
-	desc: string[]
-	score: number
-	savingThrows: string[]
-	skills: ISkill[]
-}
+import { IAbilityScore, ISkill } from './interfaces'
 
 export function isIAbilityScore(obj: any): obj is IAbilityScore {
 	return (

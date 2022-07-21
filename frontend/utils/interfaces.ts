@@ -19,3 +19,18 @@ enum Rest {
 	none = 'none',
 	overnight = 'overnight',
 }
+export interface IAbilityScore {
+	name: string
+	fullName: string
+	desc: string[]
+	score: number
+	savingThrows: string[]
+	skills: ISkill[]
+}
+export interface ISkill {
+	name: string
+	index: string
+	url?: string
+	proficient: boolean
+	modifier: number
+}

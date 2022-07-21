@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react'
-import { IAbilityScore, ISkill } from '../../../../../utils/dummyData'
+import { IAbilityScore, ISkill } from '../../../../../utils/interfaces'
 import ASHeader from './ASHeader'
 import Skill from './Skill'
 
