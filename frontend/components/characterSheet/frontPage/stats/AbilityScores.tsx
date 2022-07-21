@@ -1,11 +1,7 @@
 import { statSync } from 'fs'
 import React, { FC, useEffect, useState } from 'react'
-import {
-	IAbilityScore,
-	getStats,
-	isIAbilityScore,
-	storeStatsLocal,
-} from '../../../../utils/dummyData'
+import { getStats, isIAbilityScore, storeStatsLocal } from '../../../../utils/dummyData'
+import { IAbilityScore } from '../../../../utils/interfaces'
 import { Card } from '../../../UI/containers/Card'
 import ASHeader from './statComponents/ASHeader'
 import SkillsList from './statComponents/SkillsList'
