@@ -6,6 +6,32 @@ import AbilityScores from './stats/AbilityScores'
 import WeaponList from './weaponsAbilities/weapons/WeaponList'
 import AbilityList from './weaponsAbilities/abilities/AbilityList'
 import { IAbility, Rest, IWeapon } from '../../../utils/interfaces'
+import Modal from 'react-modal'
+import Button from '../../UI/input/Button'
+
+const FrontPage = () => {
+	const [TEMP_SPELLS, setTEMP_SPELLS] = useState(TEMP_SPELLS_1)
+	const [isOpen, setIsOpen] = React.useState(false)
+	const handleAddAbility = () => {
+		console.log('You just tried to add an ability!')
+	}
+	Modal.setAppElement('#__next')
+	return (
+		<>
+			<BodyContainer className="w-screen gap-6 bg-base-300 !justify-start ">
+				<MetaInfo className="h-fit " characterName="Halfdan Helligskæg" />
+				<PrimaryInfo className="w-full shrink " />
+				<div className="bg-transparent grid grid-flow-col grid-rows-1 gap-4 grid-cols-weaponAbilities min-h[20%] h-[60%] max-h-[75%] rounded-md ">
+					<div className="flex flex-col row-span-full gap-4">
+						<WeaponList weapons={TEMP_WEAPONS_1} />
+						<AbilityList addAbilityClicked={handleAddAbility} abilities={TEMP_SPELLS} />
+					</div>
+					<AbilityScores className="w-full bg-transparent h-full col-span-2 row-span-full" />
+				</div>
+			</BodyContainer>
+		</>
+	)
+}
 
 const TEMP_SPELLS_1: IAbility[] = [
 	{
@@ -84,30 +110,4 @@ const TEMP_WEAPONS_1: IWeapon[] = [
 		index: 'dagger',
 	},
 ]
-
-const FrontPage = () => {
-	const [TEMP_SPELLS, setTEMP_SPELLS] = useState(TEMP_SPELLS_1)
-
-	const handleAddAbility = () => {
-		console.log('You just tried to add an ability!')
-	}
-
-	return (
-		<BodyContainer className="w-screen gap-6 bg-base-300 !justify-start ">
-			<MetaInfo className="h-fit " characterName="Halfdan Helligskæg" />
-			<PrimaryInfo className="w-full shrink " />
-			<div className="bg-transparent grid grid-flow-col grid-rows-1 gap-4 grid-cols-weaponAbilities min-h[20%] h-[60%] max-h-[75%] rounded-md ">
-				<div className="flex flex-col row-span-full gap-4">
-					<WeaponList weapons={TEMP_WEAPONS_1} />
-					<AbilityList
-						addAbilityClicked={handleAddAbility}
-						abilities={TEMP_SPELLS}
-					></AbilityList>
-				</div>
-				<AbilityScores className="w-full bg-transparent h-full col-span-2 row-span-full" />
-			</div>
-		</BodyContainer>
-	)
-}
-
 export default FrontPage
