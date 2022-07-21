@@ -1,5 +1,7 @@
 const BASE_STRING = 'https://www.dnd5eapi.co/api/ability-scores/'
-const SUB_STRINGS = ['con', 'str', 'dex', 'int', 'wis', 'cha']
+const SUB_STRINGS = ['con', 'str', 'dex', 'int', 'wis', 'cha'] // normal order
+// const SUB_STRINGS_R = SUB_STRINGS.reverse() // reverse order
+const SUB_STRINGS_TO_USE = SUB_STRINGS
 import { IAbilityScore, ISkill } from './interfaces'
 
 export function isIAbilityScore(obj: any): obj is IAbilityScore {
@@ -9,14 +11,16 @@ export function isIAbilityScore(obj: any): obj is IAbilityScore {
 }
 
 const fetchApi = async (subString: string) => {
+	console.log(`fetching ${subString}`)
+
 	const response = await fetch(`${BASE_STRING + subString}`)
 	const data = await response.json()
 	return { data }
 }
 
-export const fetchAllData = async () => {
-	let data = await Promise.all(SUB_STRINGS.map(fetchApi))
-	// console.log(data)
+export const fetchAllStats = async () => {
+	let data = await Promise.all(SUB_STRINGS_TO_USE.map(fetchApi))
+	console.log(data)
 	data.forEach(item => {
 		delete item.data?.url
 		delete item.data?.index
@@ -33,7 +37,7 @@ export const fetchAllData = async () => {
 	window.localStorage.setItem('abilityScores', JSON.stringify(data))
 }
 
-export const modifyData = () => {
+export const modifyStats = () => {
 	interface newStatItem extends IAbilityScore {
 		savingThrow: { value: number; proficient: boolean }
 	}
@@ -96,11 +100,11 @@ export const modifyData = () => {
 	localStorage.setItem('abilityScores', JSON.stringify(newData))
 }
 
-export const getData = async (): Promise<any> => {
+export const getStats = async (): Promise<any> => {
 	let data = await JSON.parse(localStorage.getItem('abilityScores') || '[]')
 	if (data.length < 1) {
-		await fetchAllData()
-		modifyData()
+		await fetchAllStats()
+		modifyStats()
 	}
 
 	data = await JSON.parse(localStorage.getItem('abilityScores') || '[]')
@@ -111,6 +115,6 @@ export const getData = async (): Promise<any> => {
 	return resolved
 }
 
-export const storeDataLocal = (data: any, storageName: string) => {
+export const storeStatsLocal = (data: any, storageName: string) => {
 	localStorage.setItem(storageName, JSON.stringify(data))
 }

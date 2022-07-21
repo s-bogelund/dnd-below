@@ -48,7 +48,7 @@ const SkillsList: FC<SkillsList> = ({
 	}
 	return (
 		<>
-			<div className="flex flex-col items-center rounded-md shadow-sm shadow-gray-800 justify-start bg-neutral w-full h-fit p-[2px] lg:gap-2">
+			<div className="flex flex-col items-center rounded-md shadow-sm shadow-gray-800 justify-start bg-neutral w-full h-fit p-[2px] lg:gap-2 overflow-scroll">
 				<ASHeader
 					statName={abilityScore?.fullName}
 					score={abilityScore?.score}

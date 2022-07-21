@@ -5,8 +5,8 @@ export default {
 	type: "document",
 	fields: [
 		{
-			name: "generalInfo",
-			title: "General Info",
+			name: "metaInfo",
+			title: "Meta Info",
 			type: "object",
 			fields: [
 				{

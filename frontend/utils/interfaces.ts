@@ -10,6 +10,8 @@ export interface IAbility {
 	url: string
 	description: string
 	level: number
+	index: string
+	spellsSlots: number
 	rest: Rest
 }
 

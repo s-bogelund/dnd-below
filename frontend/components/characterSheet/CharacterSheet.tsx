@@ -1,4 +1,5 @@
 import React from 'react'
+import { useQuery } from '@tanstack/react-query'
 import FrontPage from './frontPage/FrontPage'
 import SecondPage from './secondPage/SecondPage'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -7,6 +8,10 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 
 const CharacterSheet = () => {
+	// const { isLoading, data } = useQuery(['characterSheet'], async () => {
+	// 	return fetch('/api/characterSheet').then(res => res.json())
+	// })
+
 	return (
 		<Swiper
 			cssMode={true}

@@ -2,9 +2,9 @@ import { statSync } from 'fs'
 import React, { FC, useEffect, useState } from 'react'
 import {
 	IAbilityScore,
-	getData,
+	getStats,
 	isIAbilityScore,
-	storeDataLocal,
+	storeStatsLocal,
 } from '../../../../utils/dummyData'
 import { Card } from '../../../UI/containers/Card'
 import ASHeader from './statComponents/ASHeader'
@@ -28,7 +28,7 @@ const AbilityScores: FC<StatsProps> = props => {
 
 	useEffect(() => {
 		async function fetchData() {
-			const data = await getData()
+			const data = await getStats()
 			console.log(data)
 
 			setAbilityScores(data)
@@ -39,7 +39,7 @@ const AbilityScores: FC<StatsProps> = props => {
 	useEffect(() => {
 		if (abilityScores.length > 0) {
 			console.log(abilityScores)
-			storeDataLocal(abilityScores, 'abilityScores')
+			storeStatsLocal(abilityScores, 'abilityScores')
 		}
 	}, [abilityScores])
 

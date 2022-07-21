@@ -3,31 +3,23 @@ import Button from '../../UI/input/Button'
 import BodyContainer from '../../UI/containers/BodyContainer'
 import { Card } from '../../UI/containers/Card'
 import MetaInfo from '../frontPage/metaInfo/MetaInfo'
-import { fetchAllData, getData, modifyData } from '../../../utils/dummyData'
+import { fetchAllStats, getStats, modifyStats } from '../../../utils/dummyData'
+import { useQuery } from '@tanstack/react-query'
 
 const SecondPage = () => {
-	const [buttonText, setButtonText] = React.useState('Next')
-	const baseString = 'https://www.dnd5eapi.co/api/ability-scores/'
-	const subStrings = ['str', 'dex', 'con', 'int', 'wis', 'cha']
-
-	const fetchApi = async (subString: string) => {
-		const response = await fetch(`${baseString + subString}`)
-		const data = await response.json()
-		setButtonText(data.full_name)
-		return { data }
-	}
+	// const { isLoading, data } = useQuery(['characterSheet'], getStats)
 
 	return (
 		<BodyContainer className="grid-cols-1 grid-rows-3 bg-base-300 h-screen w-screen">
 			<MetaInfo characterName="Halfdan Helligskæg" />
 			<div>
-				<Button className="btn-primary px-4" onClick={fetchAllData}>
+				<Button className="btn-primary px-4" onClick={fetchAllStats}>
 					Fetch Data
 				</Button>
-				<Button className="btn-primary px-4 ml-5" onClick={modifyData}>
+				<Button className="btn-primary px-4 ml-5" onClick={modifyStats}>
 					Modify Data
 				</Button>
-				<Button className="btn-primary px-4 ml-5" onClick={getData}>
+				<Button className="btn-primary px-4 ml-5" onClick={getStats}>
 					Retrieve Local Data
 				</Button>
 			</div>
