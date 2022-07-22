@@ -1,8 +1,5 @@
 import React, { FC, ReactNode, useEffect } from 'react'
 import { createPortal } from 'react-dom'
-import dynamic from 'next/dynamic'
-import classes from './Modal.module.css'
-import { Card } from './Card'
 
 export interface Dialog {
 	isOpen?: boolean
@@ -35,7 +32,7 @@ export const Backdrop: FC<Backdrop> = props => {
 
 const ModalOverlay: FC<Overlay> = props => {
 	return (
-		<div className={'react-modal ' + props.className}>
+		<div className={'react-modal modal-test ' + props.className}>
 			{props.children || props.bodyText || 'No Text Has Been Set'}
 		</div>
 	)
