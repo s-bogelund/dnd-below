@@ -1,0 +1,51 @@
+.modal-test {
+	transition: fade-in;
+	animation: fade-in;
+	animation-duration: 0.5s;
+}
+
+.react-modal {
+	@apply bg-black p-4 fixed z-30;
+	top: 20vh;
+	left: 5%;
+	width: 90%;
+	border-radius: 14px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 20;
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+		transform: translateY(-3rem);
+	}
+	30% {
+		opacity: 1;
+		transform: translateY(-1rem);
+	}
+	50% {
+		opacity: 1;
+		transform: translateY(1rem);
+	}
+	70% {
+		opacity: 1;
+		transform: translateY(-0.75rem);
+	}
+	90% {
+		opacity: 1;
+		transform: translateY(0.5rem);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

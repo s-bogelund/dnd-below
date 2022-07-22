@@ -1,9 +1,0 @@
-.iconFontXl {
-	font-size: 144px;
-}
-
-@media (min-width: 967px) {
-	.iconFontXl {
-		font-size: 192px;
-	}
-}

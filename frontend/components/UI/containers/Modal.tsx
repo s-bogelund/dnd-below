@@ -1,59 +1,121 @@
-import React, { FC } from 'react'
-import Modal from 'react-modal'
+import React, { FC, ReactNode, useEffect } from 'react'
+import { createPortal } from 'react-dom'
+import dynamic from 'next/dynamic'
+import classes from './Modal.module.css'
+import { Card } from './Card'
 
-const customStyles = {
-	content: {
-		top: '50%',
-		left: '50%',
-		right: 'auto',
-		bottom: 'auto',
-		marginRight: '-50%',
-		transform: 'translate(-50%, -50%)',
-		width: '50%',
-		height: '50%',
-		zIndex: '10',
-	},
-}
-
-interface ModalProps {
-	isOpen: boolean
-	onRequestClose?: () => void
+export interface Dialog {
+	isOpen?: boolean
+	onClose?: () => void
 	children?: React.ReactNode
 	className?: string
+	bodyText?: React.ReactNode
+	title?: string
+	actions?: React.ReactNode
+	parentId?: string
+	dynamic?: boolean
 }
 
-const ModalTest: FC<ModalProps> = props => {
-	const [isOpen, setIsOpen] = React.useState(props.isOpen)
-	const [subtitle, setSubtitle] = React.useState('These are the subtitles')
+interface Overlay {
+	children: React.ReactNode
+	className?: string
+	bodyText?: React.ReactNode
+}
 
+interface Backdrop {
+	onClose?: () => void
+}
+
+export const Backdrop: FC<Backdrop> = props => {
 	return (
-		<div>
-			<button
-				onClick={() => {
-					setIsOpen(true)
-				}}
-			>
-				Open Modal
-			</button>
-			<Modal
-				isOpen={isOpen}
-				onRequestClose={() => setIsOpen(false)}
-				style={customStyles}
-				contentLabel="Example Modal"
-			>
-				<h2>Hello</h2>
-				<button onClick={() => setIsOpen(false)}>close</button>
-				<div>I am a modal</div>
-				<form>
-					<input />
-					<button>tab navigation</button>
-					<button>stays</button>
-					<button>inside</button>
-					<button>the modal</button>
-				</form>
-			</Modal>
+		// className="fixed top-0 left-0 w-full h-full z-20 bg-black opacity-75"
+		<div className="backdrop" onClick={props.onClose} />
+	)
+}
+
+const ModalOverlay: FC<Overlay> = props => {
+	return (
+		<div className={'react-modal ' + props.className}>
+			{props.children || props.bodyText || 'No Text Has Been Set'}
 		</div>
 	)
 }
 
-export default ModalTest
+const Modal: FC<Dialog> = props => {
+	const [dynamic, setDynamic] = React.useState(props.dynamic || false)
+	let portalElement: HTMLElement | null = null
+
+	const [mounted, setMounted] = React.useState(false)
+	useEffect(() => {
+		/*eslint-disable */
+		setMounted(true)
+		portalElement = document.getElementById(
+			props.parentId ? props.parentId : 'modal-root'
+		)
+		/*eslint-enable */
+		return () => {
+			console.log(portalElement)
+
+			setMounted(false)
+		}
+	}, [])
+
+	const handleSsr = () => {
+		if (dynamic) {
+			return (
+				<>
+					{mounted &&
+						createPortal(
+							<Backdrop onClose={props.onClose} />,
+							portalElement ? portalElement : document.body
+						)}
+					{mounted &&
+						createPortal(
+							<ModalOverlay bodyText={props.bodyText}>{props.children}</ModalOverlay>,
+							portalElement
+								? portalElement
+								: document.getElementById('modal-root') || document.body
+						)}
+				</>
+			)
+		} else {
+			return (
+				<>
+					{createPortal(
+						<Backdrop onClose={props.onClose} />,
+						portalElement
+							? portalElement
+							: document.getElementById('modal-root') || document.body
+					)}
+					{createPortal(
+						<ModalOverlay>{props.children}</ModalOverlay>,
+						portalElement
+							? portalElement
+							: document.getElementById('modal-root') || document.body
+					)}
+				</>
+			)
+		}
+	}
+
+	return <>{props.isOpen && <div>{handleSsr()}</div>}</>
+	// return (
+	// 	props.isOpen && (
+	// 		<div>
+	// 			{createPortal(
+	// 				<Backdrop onClose={props.onClose} />,
+	// 				portalElement
+	// 					? portalElement
+	// 					: document.getElementById('modal-root') || document.body
+	// 			)}
+	// 			{createPortal(
+	// 				<ModalOverlay>{props.children || 'Hello!'}</ModalOverlay>,
+	// 				portalElement
+	// 					? portalElement
+	// 					: document.getElementById('modal-root') || document.body
+	// 			)}
+	// 		</div>
+	// 	)
+	// )
+}
+export default Modal

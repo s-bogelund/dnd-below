@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Button } from '@mui/material'
 import BodyContainer from '../../UI/containers/BodyContainer'
 import MetaInfo from './metaInfo/MetaInfo'
 import PrimaryInfo from './primaryInfo/PrimaryInfo'
@@ -6,18 +7,23 @@ import AbilityScores from './stats/AbilityScores'
 import WeaponList from './weaponsAbilities/weapons/WeaponList'
 import AbilityList from './weaponsAbilities/abilities/AbilityList'
 import { IAbility, Rest, IWeapon } from '../../../utils/interfaces'
-import Modal from 'react-modal'
-import Button from '../../UI/input/Button'
+import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
+import Modal from '../../UI/containers/Modal'
 
 const FrontPage = () => {
 	const [TEMP_SPELLS, setTEMP_SPELLS] = useState(TEMP_SPELLS_1)
 	const [isOpen, setIsOpen] = React.useState(false)
 	const handleAddAbility = () => {
 		console.log('You just tried to add an ability!')
+		setIsOpen(true)
 	}
-	Modal.setAppElement('#__next')
+
+	const dialogText =
+		'This is a dialog window where you can choose a spell to add. It is not implemented yet, but wouldnt that be cool?'
+
 	return (
-		<>
+		<div id="test">
 			<BodyContainer className="w-screen gap-6 bg-base-300 !justify-start ">
 				<MetaInfo className="h-fit " characterName="Halfdan Helligskæg" />
 				<PrimaryInfo className="w-full shrink " />
@@ -28,8 +34,14 @@ const FrontPage = () => {
 					</div>
 					<AbilityScores className="w-full bg-transparent h-full col-span-2 row-span-full" />
 				</div>
+				<Modal
+					dynamic={true}
+					bodyText={dialogText}
+					isOpen={isOpen}
+					onClose={() => setIsOpen(false)}
+				></Modal>
 			</BodyContainer>
-		</>
+		</div>
 	)
 }
 

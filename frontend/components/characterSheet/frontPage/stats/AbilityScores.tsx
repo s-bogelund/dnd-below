@@ -3,8 +3,8 @@ import React, { FC, useEffect, useState } from 'react'
 import { getStats, isIAbilityScore, storeStatsLocal } from '../../../../utils/dummyData'
 import { IAbilityScore } from '../../../../utils/interfaces'
 import { Card } from '../../../UI/containers/Card'
-import ASHeader from './statComponents/ASHeader'
-import SkillsList from './statComponents/SkillsList'
+import ASHeader from './skillComponents/ASHeader'
+import SkillsList from './skillComponents/SkillsList'
 
 interface StatsProps {
 	className?: string
