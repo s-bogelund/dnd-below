@@ -4,11 +4,12 @@
 }
 
 .r-modal {
-	@apply bg-base-100 p-4 fixed z-30 justify-center h-fit;
-	top: 10vh;
+	/*--height: clamp(15%, fit, 70%);*/
+	--height: clamp(0, 500px, 50%);
+	--responsive-top: calc(var(--height) - 1000);
+	@apply bg-base-100 p-8 fixed z-30 justify-center h-fit top-[15%] translate-x-[-50%]  max-h-[70%] overflow-scroll w-fit min-w-[30%] max-w-[95%];
 	left: 50%;
-	transform: translateX(-50%);
-	width: clamp(50%, 600px, 95%);
+	width: clamp(50%, 80vw, calc(98% - 20px));
 	border-radius: 14px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 

@@ -16,8 +16,8 @@ const SecondPage = () => {
 	// const { isLoading, data } = useQuery(['characterSheet'], getStats)
 
 	return (
-		<BodyContainer className="grid-cols-1 grid-rows-3 bg-base-300 h-screen w-screen">
-			<MetaInfo characterName="Halfdan Helligskæg" />
+		<BodyContainer className="bg-base-300 w-screen justify-center items-center content-center">
+			{/* <MetaInfo characterName="Halfdan Helligskæg" /> */}
 			{/* <div>
 				<Button className="btn-primary px-4" onClick={fetchAllStats}>
 					Fetch Data
@@ -35,17 +35,29 @@ const SecondPage = () => {
 					Retrieve Fireball data
 				</Button>
 			</div> */}
-			<div className="flex flex-row w-full justify-between">
-				<Button className="btn-primary px-4" onClick={() => setModalLeft(true)}>
+			<div className="flex flex-row w-full md:justify-between justify-center flex-wrap !self-center !justify-self-center gap-2 mt-3">
+				<Button
+					className="btn-primary px-4 mx-2 w-[35%]"
+					onClick={() => setModalLeft(true)}
+				>
 					From left
 				</Button>
-				<Button className="btn-primary px-4 ml-5" onClick={() => setModalRight(true)}>
+				<Button
+					className="btn-primary px-4 mx-2 w-[35%]"
+					onClick={() => setModalRight(true)}
+				>
 					From right
 				</Button>
-				<Button className="btn-primary px-4 ml-5" onClick={() => setModalBottom(true)}>
+				<Button
+					className="btn-primary px-4 mx-2 w-[35%]"
+					onClick={() => setModalBottom(true)}
+				>
 					From bottom
 				</Button>
-				<Button className="btn-success px-4 ml-5" onClick={() => setModalTop(true)}>
+				<Button
+					className="btn-success px-4 mx-2 w-[35%]"
+					onClick={() => setModalTop(true)}
+				>
 					From top
 				</Button>
 			</div>
@@ -84,19 +96,6 @@ const SecondPage = () => {
 					Invidunt clita diam dolor ipsum rebum justo vel duis illum quod vel eirmod
 					invidunt diam et nonummy. Vero accusam erat dolore facilisis lorem labore
 					hendrerit. Gubergren sit et eu dolores ut aliquip lorem amet eos. Dolore eirmod
-					justo ut veniam et et lorem kasd facilisis duis aliquyam amet gubergren
-					consetetur duo rebum tempor et. Aliquyam clita ipsum. Nonumy rebum tempor
-					laoreet augue blandit invidunt diam eros eum duo esse et consetetur accusam
-					facilisi et. Aliquyam nonumy dolores eros labore aliquam eos adipiscing ipsum
-					elit et kasd ipsum. Diam diam et dolor ut elitr no sed at esse duis et te.
-					Accusam ipsum gubergren zzril feugiat magna feugait vero dolore sadipscing vel
-					blandit erat. Et sadipscing duo id. Sit in vel. Et diam no ipsum dolore dolore
-					rebum est clita enim stet et consequat takimata amet in sed. Tempor lorem lorem
-					accusam tation dolore eirmod praesent mazim rebum et zzril. Aliquip vero eirmod
-					lorem at iusto sed diam elitr labore tempor et nonumy eros sit sed invidunt.
-					Lorem iusto dolore at elit sanctus justo commodo imperdiet hendrerit et sea. Et
-					wisi et consequat te doming aliquyam. Dolores aliquyam lorem vel ea dolores
-					dolor ea ipsum tempor dolore ullamcorper eos. Sadipscing et no no et justo.
 				</div>
 			</Modal>
 			<Modal
