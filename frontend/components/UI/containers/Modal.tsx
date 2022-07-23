@@ -32,7 +32,7 @@ export const Backdrop: FC<Backdrop> = props => {
 
 const ModalOverlay: FC<Overlay> = props => {
 	return (
-		<div className={'react-modal modal-test ' + props.className}>
+		<div className={'r-modal ' + ' ' + props.className}>
 			{props.children || props.bodyText || 'No Text Has Been Set'}
 		</div>
 	)
@@ -68,7 +68,9 @@ const Modal: FC<Dialog> = props => {
 						)}
 					{mounted &&
 						createPortal(
-							<ModalOverlay bodyText={props.bodyText}>{props.children}</ModalOverlay>,
+							<ModalOverlay className={props.className} bodyText={props.bodyText}>
+								{props.children}
+							</ModalOverlay>,
 							portalElement
 								? portalElement
 								: document.getElementById('modal-root') || document.body

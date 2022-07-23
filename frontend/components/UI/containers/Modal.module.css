@@ -10,20 +10,21 @@
 
 .modal {
 	position: fixed;
+	display: flex
 	top: 20vh;
 	left: 5%;
-	width: 90%;
+	width: clamp(40%, 40rem, 90%);
 	background-color: white;
 	padding: 1rem;
 	border-radius: 14px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 	z-index: 30;
+	@apply justify-center content-center items-center h-fit
 }
 animation: slide-down 300ms ease-out forwards;
 
 @media (min-width: 768px) {
 	.modal {
-		width: 40rem;
 		left: calc(50% - 20rem);
 	}
 }

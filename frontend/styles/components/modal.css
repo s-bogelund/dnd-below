@@ -1,57 +1,84 @@
-.modal-test {
-	animation: fade-in-bottom;
-	animation-duration: 0.5s;
+. {
+	animation: fade-in-left;
+	animation-duration: 0.4s;
 }
 
-.react-modal {
-	@apply bg-black p-4 fixed z-30;
-	top: 20vh;
-	left: 5%;
-	width: 90%;
+.r-modal {
+	@apply bg-base-100 p-4 fixed z-30 justify-center h-fit;
+	top: 10vh;
+	left: 50%;
+	transform: translateX(-50%);
+	width: clamp(50%, 600px, 95%);
 	border-radius: 14px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+
+	&-left {
+		animation: fade-in-left;
+		animation-duration: 0.4s;
+	}
+	&-right {
+		animation: fade-in-right;
+		animation-duration: 0.4s;
+	}
+	&-top {
+		animation: fade-in-top;
+		animation-duration: 0.4s;
+	}
+	&-bottom {
+		animation: fade-in-bottom;
+		animation-duration: 0.4s;
+	}
 }
 
 .backdrop {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	z-index: 20;
+	@apply fixed top-0 left-0 w-full h-full z-20 bg-black opacity-50;
 }
 
 @keyframes fade-in-top {
 	0% {
 		opacity: 0;
-		transform: translateY(-7rem);
+		left: 50%;
+		transform: translate(-50%, -7rem);
 	}
 	100% {
+		left: 50%;
 		opacity: 1;
-		transform: translateY(0);
+		transform: translate(-50%, 0);
 	}
 }
 @keyframes fade-in-bottom {
 	0% {
 		opacity: 0;
-		transform: translateY(70vh);
-	}
-	50% {
-		opacity: 0.3;
+		left: 50%;
+		transform: translate(-50%, 70vh);
 	}
 	100% {
+		left: 50%;
 		opacity: 1;
-		transform: translateY(0);
+		transform: translate(-50%, 0);
 	}
 }
 @keyframes fade-in-left {
 	0% {
+		left: 50%;
+		transform: translate(-100%, 0);
 		opacity: 0;
-		transform: translateX(-5rem);
 	}
 	100% {
+		left: 50%;
+		transform: translate(-50%, 0);
 		opacity: 1;
-		transform: translateX(0);
+	}
+}
+@keyframes fade-in-right {
+	0% {
+		left: 50%;
+		transform: translate(0, 0);
+		opacity: 0;
+	}
+	100% {
+		left: 50%;
+		transform: translate(-50%, 0);
+		opacity: 1;
 	}
 }
