@@ -2,17 +2,18 @@ import React from 'react'
 import { Button as MuiButton } from '@mui/material'
 
 interface ButtonProps {
-	className?: string
+	sx?: object
 	children?: React.ReactNode
+	variant?: 'text' | 'outlined' | 'contained'
 	onClick?: () => void
 }
 
-const HiddenButton = (props: ButtonProps) => {
+const Button = (props: ButtonProps) => {
 	return (
-		<MuiButton variant="text" onClick={props.onClick} sx={{ backgroundOpacity: 0 }}>
+		<MuiButton variant={props.variant} onClick={props.onClick} sx={props.sx}>
 			{props.children}
 		</MuiButton>
 	)
 }
 
-export default HiddenButton
+export default Button

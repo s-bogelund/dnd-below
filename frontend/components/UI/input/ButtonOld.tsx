@@ -6,7 +6,7 @@ interface ButtonProps {
 	onClick?: () => void
 }
 
-const Button = (props: ButtonProps) => {
+const ButtonOld = (props: ButtonProps) => {
 	return (
 		<button onClick={props.onClick} className={'btn pb-1 ' + props.className}>
 			{props.children}
@@ -14,4 +14,4 @@ const Button = (props: ButtonProps) => {
 	)
 }
 
-export default Button
+// export default Button

@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../../UI/input/Button'
+import Button from '../../UI/input/ButtonMui'
 import BodyContainer from '../../UI/containers/BodyContainer'
 import { Card } from '../../UI/containers/Card'
 import MetaInfo from '../frontPage/metaInfo/MetaInfo'
@@ -36,30 +36,10 @@ const SecondPage = () => {
 				</Button>
 			</div> */}
 			<div className="flex flex-row w-full md:justify-between justify-center flex-wrap !self-center !justify-self-center gap-2 mt-3">
-				<Button
-					className="btn-primary px-4 mx-2 w-[35%]"
-					onClick={() => setModalLeft(true)}
-				>
-					From left
-				</Button>
-				<Button
-					className="btn-primary px-4 mx-2 w-[35%]"
-					onClick={() => setModalRight(true)}
-				>
-					From right
-				</Button>
-				<Button
-					className="btn-primary px-4 mx-2 w-[35%]"
-					onClick={() => setModalBottom(true)}
-				>
-					From bottom
-				</Button>
-				<Button
-					className="btn-success px-4 mx-2 w-[35%]"
-					onClick={() => setModalTop(true)}
-				>
-					From top
-				</Button>
+				<Button onClick={() => setModalLeft(true)}>From left</Button>
+				<Button onClick={() => setModalRight(true)}>From right</Button>
+				<Button onClick={() => setModalBottom(true)}>From bottom</Button>
+				<Button onClick={() => setModalTop(true)}>From top</Button>
 			</div>
 			<Modal
 				dynamic={true}

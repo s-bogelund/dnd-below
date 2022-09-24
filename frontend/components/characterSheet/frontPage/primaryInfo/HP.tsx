@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import Button from '../../../UI/input/Button'
+import Button from '../../../UI/input/ButtonMui'
 import { Card } from '../../../UI/containers/Card'
 import HiddenTextField from '../../../UI/input/HiddenTextField'
 import HiddenButton from '../../../UI/input/HiddenButton'
