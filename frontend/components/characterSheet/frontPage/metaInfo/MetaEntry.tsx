@@ -34,7 +34,7 @@ const MetaEntry = (props: MetaEntryProps) => {
 	function handleBodyText(e: HTMLInputElement) {
 		setBodyText(e.value)
 		const length = e.value.length
-		if (visualViewport.width > 1000) {
+		if (visualViewport && visualViewport.width > 1000) {
 			return
 		}
 

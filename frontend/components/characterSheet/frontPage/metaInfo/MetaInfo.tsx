@@ -59,7 +59,7 @@ const MetaInfo = (props: MetaInfoProps) => {
 				className={'flex flex-col col-span-4 min-h-[7rem] h-[40%] max-h-[12rem] test123'}
 			>
 				<p className="text-sm mb-1 lg:font-semibold font-medium">Character Name</p>
-				<Card className=" lg:px-2 md:px-1 font-semibold text-base-content rounded-sm border-[1px] border-white border-opacity-20 h-full">
+				<Card className=" lg:px-2 md:px-1 font-semibold text-secondary rounded-sm border-[1px] border-white border-opacity-20 h-full">
 					<HiddenTextField
 						className={
 							'input lg:text-3xl md:text-2xl h-full w-full font-medium focus:border-transparent focus-input-outline p-0 bg-transparent text-center rounded-sm '

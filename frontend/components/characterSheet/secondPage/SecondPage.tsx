@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from '../../UI/input/ButtonMui'
 import BodyContainer from '../../UI/containers/BodyContainer'
 import { Card } from '../../UI/containers/Card'
 import MetaInfo from '../frontPage/metaInfo/MetaInfo'
@@ -7,6 +6,8 @@ import { fetchAllStats, getStats, modifyStats } from '../../../utils/dummyData'
 import { useQuery } from '@tanstack/react-query'
 import { fetchSpellInfo } from '../../../utils/fetching'
 import Modal from '../../UI/containers/Modal'
+import ButtonMui from '../../UI/input/ButtonMui'
+import { Button } from '@mui/material'
 
 const SecondPage = () => {
 	const [modalLeft, setModalLeft] = React.useState(false)
@@ -36,10 +37,11 @@ const SecondPage = () => {
 				</Button>
 			</div> */}
 			<div className="flex flex-row w-full md:justify-between justify-center flex-wrap !self-center !justify-self-center gap-2 mt-3">
-				<Button onClick={() => setModalLeft(true)}>From left</Button>
-				<Button onClick={() => setModalRight(true)}>From right</Button>
-				<Button onClick={() => setModalBottom(true)}>From bottom</Button>
-				<Button onClick={() => setModalTop(true)}>From top</Button>
+				{/* <ButtonMui onClick={() => setModalLeft(true)}>From left</ButtonMui>
+				<ButtonMui onClick={() => setModalRight(true)}>From right</ButtonMui>
+				<ButtonMui onClick={() => setModalBottom(true)}>From bottom</ButtonMui>
+				<ButtonMui onClick={() => setModalTop(true)}>From top</ButtonMui> */}
+				<Button onClick={() => setModalLeft(true)} />
 			</div>
 			<Modal
 				dynamic={true}

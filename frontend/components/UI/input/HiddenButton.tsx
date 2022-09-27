@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button as MuiButton } from '@mui/material'
+import { Button as MuiButton, Typography } from '@mui/material'
 
 interface ButtonProps {
 	className?: string
@@ -10,7 +10,10 @@ interface ButtonProps {
 const HiddenButton = (props: ButtonProps) => {
 	return (
 		<MuiButton variant="text" onClick={props.onClick} sx={{ backgroundOpacity: 0 }}>
-			{props.children}
+			{/* color={theme.palette.primary.main} */}
+			<Typography variant="h4" color="text.primary">
+				{props.children}
+			</Typography>
 		</MuiButton>
 	)
 }

@@ -93,12 +93,8 @@ const HP: FC<HPProps> = props => {
 					/>
 				</div>
 				<div className="flex flex-col p-12 h-full w-fit justify-between lg:justify-center gap-3 lg:gap-4 px-1 absolute right-3 py-0">
-					<HiddenButton onClick={() => onHpButtonClick(+1)} className="text-4xl btn-md  ">
-						+
-					</HiddenButton>
-					<HiddenButton className="text-4xl btn-md " onClick={() => onHpButtonClick(-1)}>
-						-
-					</HiddenButton>
+					<HiddenButton onClick={() => onHpButtonClick(+1)}>+</HiddenButton>
+					<HiddenButton onClick={() => onHpButtonClick(-1)}>-</HiddenButton>
 				</div>
 			</Card>
 		</div>

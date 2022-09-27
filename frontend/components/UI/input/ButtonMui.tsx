@@ -1,5 +1,5 @@
-import React from 'react'
 import { Button as MuiButton } from '@mui/material'
+import React, { FC } from 'react'
 
 interface ButtonProps {
 	sx?: object
@@ -8,9 +8,9 @@ interface ButtonProps {
 	onClick?: () => void
 }
 
-const Button = (props: ButtonProps) => {
+const Button: FC<ButtonProps> = props => {
 	return (
-		<MuiButton variant={props.variant} onClick={props.onClick} sx={props.sx}>
+		<MuiButton variant="contained" onClick={props.onClick} sx={props.sx}>
 			{props.children}
 		</MuiButton>
 	)
